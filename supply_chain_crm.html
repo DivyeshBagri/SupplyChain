@@ -9,7 +9,7 @@
 :root{
   --bg:#f5f4f0;--surface:#fff;--surface2:#fafaf8;
   --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);
-  --text:#000000;--text2:#000000;--text3:#000000;
+  --text:#000;--text2:#000;--text3:#000;
   --accent:#1a5c3a;--accent-light:#edf5f0;
   --ok:#225034;--ok-bg:#f0fdf4;--ok-b:#bbf7d0;
   --warn:#92400e;--warn-bg:#fffbeb;--warn-b:#fde68a;
@@ -43,13 +43,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
 .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .s-foot{margin-top:auto;border-top:1px solid var(--border)}
 .s-foot-inner{padding:10px 14px}
-.s-foot .conn-status-bar{display:flex;align-items:center;gap:7px;padding:7px 0}
-.s-foot .conn-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:#d1d5db}
-.s-foot .conn-dot.ok{background:#16a34a}
-.s-foot .conn-dot.err{background:#dc2626}
-.s-foot .conn-dot.loading{background:#d97706;animation:pulse 1s infinite}
+.conn-status-bar{display:flex;align-items:center;gap:7px;padding:7px 0}
+.conn-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:#d1d5db}
+.conn-dot.ok{background:#16a34a}
+.conn-dot.err{background:#dc2626}
+.conn-dot.loading{background:#d97706;animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.s-foot .conn-text{font-size:11px;color:#000;font-weight:500}
+.conn-text{font-size:11px;color:#000;font-weight:500}
 
 /* MAIN */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
@@ -64,27 +64,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
 .crumb .cc{color:#000;font-weight:600}
 .crumb .sep{color:#000}
 
-/* PIPELINE BAR */
-.pipeline-bar{background:var(--surface);border-bottom:2px solid var(--border);padding:0 18px;display:flex;align-items:stretch;overflow-x:auto;flex-shrink:0;min-height:44px}
-.pipe-step{display:flex;align-items:center;flex-shrink:0}
-.pipe-node{display:flex;align-items:center;gap:6px;padding:0 14px;height:44px;cursor:pointer;transition:background .12s;white-space:nowrap;position:relative}
-.pipe-node:hover{background:var(--bg)}
-.pipe-node.active{background:var(--accent-light)}
-.pipe-node.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--accent)}
-.pipe-node.dimmed{opacity:.4;cursor:default}
-.pipe-node.dimmed:hover{background:transparent}
-.pipe-dot{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;border:2px solid}
-.pdq{background:var(--ok-bg);color:var(--ok);border-color:var(--ok-b)}
-.pdpo{background:var(--info-bg);color:var(--info);border-color:var(--info-b)}
-.pdpoi{background:var(--warn-bg);color:var(--warn);border-color:var(--warn-b)}
-.pdoem{background:#f5f3ff;color:#7c3aed;border-color:#ddd6fe}
-.pdcs{background:#fff1f2;color:#be123c;border-color:#fecdd3}
-.pipe-dot.active{transform:scale(1.12)}
-.pipe-label-main{font-size:12px;font-weight:700;color:#000}
-.pipe-label-sub{font-size:10px;color:#000}
-.pipe-node.active .pipe-label-main{color:var(--accent)}
-.pipe-arr{color:var(--border2);font-size:16px;flex-shrink:0;padding:0 2px;display:flex;align-items:center;user-select:none}
-
 /* TAB BAR */
 .tab-bar{display:flex;background:var(--surface);border-bottom:1px solid var(--border);padding:0 18px;overflow-x:auto;flex-shrink:0}
 .tab{padding:10px 16px;font-size:13px;font-weight:500;color:#000;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all .1s}
@@ -95,8 +74,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
 .btn{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border2);background:var(--surface);color:#000;transition:all .1s;white-space:nowrap}
 .btn:hover{background:var(--bg)}
 .btn:active{transform:scale(.98)}
-.btn-p{background:var(--accent);color:#fff;border-color:var(--accent)}
-.btn-p:hover{background:#1d6b44}
 .btn-add{background:#16a34a;color:#fff;border-color:#16a34a}
 .btn-add:hover{background:#15803d}
 .btn-sm{padding:5px 11px;font-size:13px}
@@ -131,27 +108,18 @@ tbody tr.poi-row-selected td{background:var(--accent-light)!important;border-lef
 
 /* RECORD DETAIL */
 .empty{text-align:center;padding:28px 16px;color:#000;font-size:13px}
-.rec-header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 18px}
-.rec-id-row{display:flex;align-items:center;gap:7px;margin-bottom:4px}
-.rec-id{font-size:19px;font-weight:700;letter-spacing:-.4px;font-family:'DM Mono',monospace;color:#000}
-.rec-meta{font-size:13px;color:#000;font-weight:500}
-.rec-meta span{margin-right:12px}
 .rec-body{padding:14px 18px;display:flex;flex-direction:column;gap:14px}
 .section{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
 .sec-hdr{padding:10px 12px;background:var(--surface2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .sec-title{font-size:13px;font-weight:700;color:#000}
 .hint{font-size:12px;color:#000;font-style:italic;padding:7px 12px;background:var(--surface2);border-bottom:1px solid var(--border)}
-.chip-clr{padding:2px 8px;border-radius:20px;border:1px solid var(--ok-b);background:var(--ok-bg);font-size:12px;font-weight:600;cursor:pointer;color:var(--accent);transition:all .1s}
-.chip-clr:hover{background:var(--accent);color:#fff}
 
 /* POI SELECTED PANEL */
-.poi-selected-panel{background:var(--surface);border:2px solid var(--ok-b);border-radius:8px;overflow:hidden;margin-top:0}
+.poi-selected-panel{background:var(--surface);border:2px solid var(--ok-b);border-radius:8px;overflow:hidden}
 .poi-panel-header{padding:10px 14px;background:var(--ok-bg);border-bottom:1px solid var(--ok-b);display:flex;align-items:center;justify-content:space-between;gap:8px}
 .poi-panel-title{font-size:13px;font-weight:700;color:#000;display:flex;align-items:center;gap:6px}
 .poi-panel-close{cursor:pointer;color:#000;font-size:14px;padding:2px 6px;border-radius:4px;transition:background .1s}
 .poi-panel-close:hover{background:var(--border);color:#000}
-.sub-table-section{border-bottom:2px solid var(--ok-b)}
-.sub-table-section:last-child{border-bottom:none}
 .sub-tables-wrapper{display:flex;flex-direction:column;gap:16px;padding:16px}
 .sub-table-block{background:var(--surface);border:1px solid var(--border2);border-radius:7px;overflow:hidden}
 .sub-table-hdr{padding:10px 14px;background:var(--surface2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
@@ -168,10 +136,7 @@ tbody tr.poi-row-selected td{background:var(--accent-light)!important;border-lef
 .id-link{font-family:'DM Mono',monospace;font-size:13px;color:var(--accent);font-weight:600;cursor:pointer}
 .id-link:hover{text-decoration:underline}
 .mono{font-family:'DM Mono',monospace;font-size:13px;color:#000}
-.prog-w{display:flex;align-items:center;gap:5px}
-.prog{width:60px;height:4px;background:var(--border);border-radius:2px;overflow:hidden;flex-shrink:0}
-.pf{height:100%;border-radius:2px}
-.pf-ok{background:#16a34a}.pf-warn{background:#d97706}.pf-danger{background:#dc2626}.pf-0{background:#d1d5db}
+.dash{color:#000;font-size:12px}
 
 /* MODAL */
 .backdrop{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
@@ -181,9 +146,7 @@ tbody tr.poi-row-selected td{background:var(--accent-light)!important;border-lef
 .m-body{padding:16px 18px}
 .m-foot{padding:12px 18px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:7px}
 .fg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.fg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
 .f-full{grid-column:span 2}
-.f-full3{grid-column:span 3}
 .fgrp{display:flex;flex-direction:column;gap:4px}
 .fgrp label{font-size:11px;font-weight:700;color:#000;text-transform:uppercase;letter-spacing:.4px}
 .fgrp input,.fgrp select,.fgrp textarea{padding:7px 9px;border:1px solid var(--border2);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:13px;color:#000;background:var(--surface);outline:none;transition:border .1s;width:100%}
@@ -197,8 +160,71 @@ tbody tr.poi-row-selected td{background:var(--accent-light)!important;border-lef
 .toast{position:fixed;bottom:18px;right:18px;z-index:999;background:var(--text);color:#fff;padding:9px 14px;border-radius:7px;font-size:13px;font-weight:500;box-shadow:0 4px 12px rgba(0,0,0,.2);transition:all .3s}
 .toast.hide{opacity:0;transform:translateY(8px);pointer-events:none}
 
-/* empty cell dash */
-.dash{color:#000;font-size:12px}
+/* ── COLUMN FILTER ───────────────────────────────────────────────────── */
+/* Filter icon in header */
+.col-filter-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:18px;height:18px;margin-left:4px;border-radius:3px;
+  cursor:pointer;font-size:10px;color:#666;
+  border:1px solid transparent;background:transparent;
+  vertical-align:middle;transition:all .15s;flex-shrink:0;
+  font-family:sans-serif;line-height:1;
+}
+.col-filter-btn:hover{background:var(--accent-light);border-color:var(--ok-b);color:var(--accent)}
+.col-filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* Dropdown panel */
+.cf-dropdown{
+  position:fixed;z-index:500;
+  background:var(--surface);border:1px solid var(--border2);border-radius:8px;
+  box-shadow:0 8px 24px rgba(0,0,0,.14);min-width:200px;max-width:280px;
+  padding:0;overflow:hidden;
+}
+.cf-header{
+  padding:8px 12px;background:var(--surface2);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cf-header-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#000}
+.cf-clear{font-size:11px;color:var(--accent);cursor:pointer;font-weight:600;padding:2px 6px;border-radius:4px;}
+.cf-clear:hover{background:var(--accent-light)}
+.cf-search{padding:6px 10px;border-bottom:1px solid var(--border)}
+.cf-search input{width:100%;padding:5px 8px;border:1px solid var(--border2);border-radius:5px;font-size:12px;font-family:'DM Sans',sans-serif;outline:none;background:var(--bg)}
+.cf-search input:focus{border-color:var(--accent)}
+.cf-list{max-height:220px;overflow-y:auto;padding:4px 0}
+.cf-item{display:flex;align-items:center;gap:8px;padding:6px 12px;cursor:pointer;font-size:13px;transition:background .1s}
+.cf-item:hover{background:var(--bg)}
+.cf-item input[type=checkbox]{width:13px;height:13px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
+.cf-item label{cursor:pointer;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cf-empty{padding:12px;text-align:center;font-size:12px;color:#888;font-style:italic}
+.cf-footer{padding:8px 12px;border-top:1px solid var(--border);background:var(--surface2);display:flex;justify-content:flex-end;gap:6px}
+
+/* Active filter indicator dot on th */
+th .filter-active-dot{
+  display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--accent);margin-left:3px;vertical-align:middle;
+}
+
+/* ── SESSION GROUP ROWS ──────────────────────────────────────────────── */
+.group-hdr-row td{
+  background:var(--accent-light) !important;
+  border-top:2px solid var(--ok-b) !important;
+  border-bottom:1px solid var(--ok-b) !important;
+  padding:7px 10px !important;
+  cursor:pointer;
+  user-select:none;
+}
+.group-hdr-row:hover td{background:#e0f0e9 !important}
+.group-hdr-inner{display:flex;align-items:center;gap:8px}
+.group-chevron{
+  width:18px;height:18px;border-radius:4px;
+  background:var(--accent);color:#fff;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;flex-shrink:0;
+  transition:transform .2s;
+}
+.group-chevron.collapsed{transform:rotate(-90deg)}
+.group-session-label{font-size:13px;font-weight:700;color:var(--accent);font-family:'DM Mono',monospace}
+.group-meta{font-size:12px;color:#555;font-weight:500}
 </style>
 </head>
 <body>
@@ -242,12 +268,27 @@ tbody tr.poi-row-selected td{background:var(--accent-light)!important;border-lef
     <div class="m-foot"><button class="btn btn-sm" onclick="closeModal()">Cancel</button><button class="btn btn-add btn-sm" onclick="saveForm()">Save</button></div>
   </div>
 </div>
+
+<!-- Column filter dropdown (shared, positioned dynamically) -->
+<div class="cf-dropdown" id="cf-dropdown" style="display:none">
+  <div class="cf-header">
+    <span class="cf-header-title" id="cf-title">Filter</span>
+    <span class="cf-clear" onclick="cfClearAll()">Clear all</span>
+  </div>
+  <div class="cf-search"><input type="text" id="cf-search-input" placeholder="Search values…" oninput="cfRenderList()"/></div>
+  <div class="cf-list" id="cf-list"></div>
+  <div class="cf-footer">
+    <button class="btn btn-sm" onclick="cfClose()">Close</button>
+    <button class="btn btn-add btn-sm" onclick="cfApply()">Apply</button>
+  </div>
+</div>
+
 <div class="toast hide" id="toast"></div>
 
 <script>
-// ── BACKEND CONFIG (hardcoded — never shown in UI) ─────────────────────────
+// ── CONFIG ─────────────────────────────────────────────────────────────────
 const SHEET_ID = '1npOMka5bQ_OuJGSLdYiwFjK0DqeE3-TyE_k7j_ctwbw';
-const API_KEY  = 'YOUR_GOOGLE_API_KEY_HERE'; // Replace with your real API key
+const API_KEY  = 'YOUR_GOOGLE_API_KEY_HERE';
 
 // ── DATE UTILS ─────────────────────────────────────────────────────────────
 function pad(n){return String(n).padStart(2,'0')}
@@ -255,26 +296,42 @@ function todayDMY(){const d=new Date();return pad(d.getDate())+'-'+pad(d.getMont
 function isoToDMY(v){if(!v)return'';if(/^\d{2}-\d{2}-\d{4}$/.test(v))return v;const p=v.split('-');return p.length===3?p[2]+'-'+p[1]+'-'+p[0]:v}
 function dmyToISO(v){if(!v)return'';if(/^\d{4}-\d{2}-\d{2}$/.test(v))return v;const p=v.split('-');return p.length===3?p[2]+'-'+p[1]+'-'+p[0]:v}
 
-// ── ID FORMAT GENERATORS ───────────────────────────────────────────────────
-function nextQuotId(type, arr){
-  const prefixMap = {SE:'SE QID', SRE:'SER QID', BO:'BO ID', AQ:'TE QID'};
-  const prefix = prefixMap[type] || type;
-  const max = arr.length ? Math.max(...arr.map(r=>{
-    const parts = (r.id||'').split('-');
-    return parseInt(parts[parts.length-1])||0;
-  })) : 0;
-  return `${prefix}-${max+1}`;
+// ── SESSION NORMALISER ─────────────────────────────────────────────────────
+// Converts "2024-25" → "24-25", "2025-26" → "25-26", already-short stays
+function normaliseSession(v){
+  if(!v)return v;
+  // Match "YYYY-YY" or "YYYY-YYYY"
+  return v.replace(/\b(20)(\d{2})(-\d{2,4})\b/g,(_,_p,yy,tail)=>{
+    // tail is e.g. "-25" or "-2025"
+    const shortTail=tail.replace(/^-20/,'-');
+    return yy+shortTail;
+  });
+}
+
+// ── ID GENERATORS ──────────────────────────────────────────────────────────
+function nextQuotId(type,arr){
+  const prefixMap={SE:'SE QID',SRE:'SER QID',BO:'BO ID',AQ:'TE QID'};
+  const prefix=prefixMap[type]||type;
+  const max=arr.length?Math.max(...arr.map(r=>{const p=(r.id||'').split('-');return parseInt(p[p.length-1])||0})):0;
+  return`${prefix}-${max+1}`;
+}
+function nextId(prefix,arr){
+  const max=arr.length?Math.max(...arr.map(r=>parseInt((r.id||'').split('-').pop())||0)):0;
+  return`${prefix}-${String(max+1).padStart(4,'0')}`;
 }
 
 // ── STATE ──────────────────────────────────────────────────────────────────
 let DB={SE:[],SRE:[],BO:[],AQ:[],PO:[],POI:[],OEM:[],CS:[]};
-let isConnected = false;
-let viewMode='list';
-let curTab='SE', curRec=null, curType=null;
-let selPO=null, selPOI=null;
-let sq='', sf='all', formCtx=null;
-let selectedRows=new Set();
-let editingRow=null, subEditingRow=null;
+let isConnected=false;
+let viewMode='list',curTab='SE',curRec=null,curType=null;
+let selPOI=null,sq='',sf='all',formCtx=null;
+let selectedRows=new Set(),editingRow=null,subEditingRow=null;
+
+// ── NEW STATE: column filters & session groups ─────────────────────────────
+// colFilters[tab][field] = Set of selected values (empty Set = no filter)
+let colFilters={SE:{},SRE:{},BO:{},AQ:{}};
+// collapsedSessions[tab] = Set of collapsed session strings
+let collapsedSessions={SE:new Set(),SRE:new Set(),BO:new Set(),AQ:new Set()};
 
 // ── SIDEBAR ────────────────────────────────────────────────────────────────
 function toggleSidebar(){
@@ -286,7 +343,7 @@ function toggleSidebar(){
 }
 
 // ── CONNECTION STATUS ──────────────────────────────────────────────────────
-function setConnStatus(state, msg){
+function setConnStatus(state,msg){
   const dot=document.getElementById('conn-dot');
   const txt=document.getElementById('conn-text');
   if(!dot||!txt)return;
@@ -297,7 +354,7 @@ function setConnStatus(state, msg){
   txt.textContent=msg;
 }
 
-// ── GOOGLE SHEETS HEADERS ─────────────────────────────────────────────────
+// ── SHEET HEADERS ──────────────────────────────────────────────────────────
 const HEADERS={
   SE:  ['Quotaton ID','session','seQtnNo','seQtnDate','customerName','customerRefNo','kindAttention','enquiryDate','enquiryDueDate','oemName','makes','itemDescription','orfNo','sePoNo','seFileNo','remarks','status'],
   SRE: ['Quotaton ID','session','serviceQtnNo','serviceQtnDate','customerName','customerRefNo','kindAttention','enquiryDate','itemDescription','qtyMandays','uom','totalPrice','poNo','remarks','status'],
@@ -309,91 +366,43 @@ const HEADERS={
   CS:  ['Customer Supply ID','PO ID','POI ID','Quotaton ID','Delivery Date','Quantity Received','Item Name','Item Description/CAT No','OEM Invoice'],
 };
 
-// ── FIELD KEY MAPS (sheet header → object key) ────────────────────────────
 const FIELD_MAP={
-  SE:{
-    'Quotaton ID':'id','session':'session','seQtnNo':'seQtnNo','seQtnDate':'seQtnDate',
-    'customerName':'customerName','customerRefNo':'customerRefNo','kindAttention':'kindAttention',
-    'enquiryDate':'enquiryDate','enquiryDueDate':'enquiryDueDate','oemName':'oemName',
-    'makes':'makes','itemDescription':'itemDescription','orfNo':'orfNo','sePoNo':'sePoNo',
-    'seFileNo':'seFileNo','remarks':'remarks','status':'status'
-  },
-  SRE:{
-    'Quotaton ID':'id','session':'session','serviceQtnNo':'serviceQtnNo','serviceQtnDate':'serviceQtnDate',
-    'customerName':'customerName','customerRefNo':'customerRefNo','kindAttention':'kindAttention',
-    'enquiryDate':'enquiryDate','itemDescription':'itemDescription','qtyMandays':'qtyMandays',
-    'uom':'uom','totalPrice':'totalPrice','poNo':'poNo','remarks':'remarks','status':'status'
-  },
-  BO:{
-    'Quotaton ID':'id','session':'session','shreeBudgetaryNo':'shreeBudgetaryNo','makes':'makes',
-    'shreeBoDate':'shreeBoDate','customerName':'customerName','kindAttention':'kindAttention',
-    'boEnquiryDate':'boEnquiryDate','itemDescription':'itemDescription','qty':'qty',
-    'uom':'uom','totalPrice':'totalPrice','remark':'remark','status':'status'
-  },
-  AQ:{
-    'Quotaton ID':'id','session':'session','teQtnNo':'teQtnNo','teQtnDate':'teQtnDate',
-    'customerName':'customerName','customerRefNo':'customerRefNo','kindAttention':'kindAttention',
-    'enquiryDate':'enquiryDate','enquiryDueDate':'enquiryDueDate','oemName':'oemName',
-    'makes':'makes','itemDescription':'itemDescription','tePORef':'tePORef',
-    'ourFileNo':'ourFileNo','remarks':'remarks','orfNo':'orfNo','status':'status'
-  },
-  PO:{
-    'PO ID':'id','Quotation ID':'quotId','Quotation Type':'quotType','Session':'session',
-    'SE PO Num':'sePONum','SE File Num':'seFileNum','SE PO Entry Date':'sePOEntryDate',
-    'Customer Name':'customerName','Customer Tender Ref':'customerTenderRef',
-    'Customer PO NUM':'customerPONum','Customer PO Date':'customerPODate',
-    'Customer Due Date':'customerDueDate','PO Value':'poValue','GEM PO Num':'gemPONum',
-    'GEM PO Date':'gemPODate','Make':'make','Item Description':'itemDescription',
-    'OEM PO No.':'oemPONo','OEM PO Date':'oemPODate','OEM SO NUM':'oemSONum',
-    'GEM AMC Payment':'gemAMCPayment','GEM AMC Payment Amount':'gemAMCPaymentAmount',
-    'NMDC SP Num':'nmDCSPNum','Remarks':'remarks','Status':'status'
-  },
-  POI:{
-    'POI ID':'id','PO ID':'poId','Quotation ID':'quotId','Item Name':'itemName',
-    'Item Description/CAT No':'itemDescription','Ordered Qty':'orderedQty','UOM':'uom',
-    'OEM Details':'oemDetails','OEM Invoice No':'oemInvoiceNo','OEM Invoice Date':'oemInvoiceDate',
-    'SE PO NO':'sePONo','SE FILE NO':'seFileNo'
-  },
-  OEM:{
-    'OEM ID':'id','PO ID':'poId','POI ID':'poiId','Quotaton ID':'quotId',
-    'Item Name':'itemName','Item Description/CAT No':'itemDescription',
-    'Delivery Date':'date','Quantity Supplied':'qtyReceived','Client Supply Invoice':'remarks'
-  },
-  CS:{
-    'Customer Supply ID':'id','PO ID':'poId','POI ID':'poiId','Quotaton ID':'quotId',
-    'Delivery Date':'date','Quantity Received':'qtySupplied','Item Name':'itemName',
-    'Item Description/CAT No':'itemDescription','OEM Invoice':'oemId'
-  }
+  SE:{'Quotaton ID':'id','session':'session','seQtnNo':'seQtnNo','seQtnDate':'seQtnDate','customerName':'customerName','customerRefNo':'customerRefNo','kindAttention':'kindAttention','enquiryDate':'enquiryDate','enquiryDueDate':'enquiryDueDate','oemName':'oemName','makes':'makes','itemDescription':'itemDescription','orfNo':'orfNo','sePoNo':'sePoNo','seFileNo':'seFileNo','remarks':'remarks','status':'status'},
+  SRE:{'Quotaton ID':'id','session':'session','serviceQtnNo':'serviceQtnNo','serviceQtnDate':'serviceQtnDate','customerName':'customerName','customerRefNo':'customerRefNo','kindAttention':'kindAttention','enquiryDate':'enquiryDate','itemDescription':'itemDescription','qtyMandays':'qtyMandays','uom':'uom','totalPrice':'totalPrice','poNo':'poNo','remarks':'remarks','status':'status'},
+  BO:{'Quotaton ID':'id','session':'session','shreeBudgetaryNo':'shreeBudgetaryNo','makes':'makes','shreeBoDate':'shreeBoDate','customerName':'customerName','kindAttention':'kindAttention','boEnquiryDate':'boEnquiryDate','itemDescription':'itemDescription','qty':'qty','uom':'uom','totalPrice':'totalPrice','remark':'remark','status':'status'},
+  AQ:{'Quotaton ID':'id','session':'session','teQtnNo':'teQtnNo','teQtnDate':'teQtnDate','customerName':'customerName','customerRefNo':'customerRefNo','kindAttention':'kindAttention','enquiryDate':'enquiryDate','enquiryDueDate':'enquiryDueDate','oemName':'oemName','makes':'makes','itemDescription':'itemDescription','tePORef':'tePORef','ourFileNo':'ourFileNo','remarks':'remarks','orfNo':'orfNo','status':'status'},
+  PO:{'PO ID':'id','Quotation ID':'quotId','Quotation Type':'quotType','Session':'session','SE PO Num':'sePONum','SE File Num':'seFileNum','SE PO Entry Date':'sePOEntryDate','Customer Name':'customerName','Customer Tender Ref':'customerTenderRef','Customer PO NUM':'customerPONum','Customer PO Date':'customerPODate','Customer Due Date':'customerDueDate','PO Value':'poValue','GEM PO Num':'gemPONum','GEM PO Date':'gemPODate','Make':'make','Item Description':'itemDescription','OEM PO No.':'oemPONo','OEM PO Date':'oemPODate','OEM SO NUM':'oemSONum','GEM AMC Payment':'gemAMCPayment','GEM AMC Payment Amount':'gemAMCPaymentAmount','NMDC SP Num':'nmDCSPNum','Remarks':'remarks','Status':'status'},
+  POI:{'POI ID':'id','PO ID':'poId','Quotation ID':'quotId','Item Name':'itemName','Item Description/CAT No':'itemDescription','Ordered Qty':'orderedQty','UOM':'uom','OEM Details':'oemDetails','OEM Invoice No':'oemInvoiceNo','OEM Invoice Date':'oemInvoiceDate','SE PO NO':'sePONo','SE FILE NO':'seFileNo'},
+  OEM:{'OEM ID':'id','PO ID':'poId','POI ID':'poiId','Quotaton ID':'quotId','Item Name':'itemName','Item Description/CAT No':'itemDescription','Delivery Date':'date','Quantity Supplied':'qtyReceived','Client Supply Invoice':'remarks'},
+  CS:{'Customer Supply ID':'id','PO ID':'poId','POI ID':'poiId','Quotaton ID':'quotId','Delivery Date':'date','Quantity Received':'qtySupplied','Item Name':'itemName','Item Description/CAT No':'itemDescription','OEM Invoice':'oemId'},
 };
 
-// ── LOAD ALL DATA FROM SHEETS ─────────────────────────────────────────────
+// ── DATA LOADING ───────────────────────────────────────────────────────────
+function parseSheet(name, rows){
+  if(rows.length<2)return[];
+  const headers=rows[0];
+  const map=FIELD_MAP[name]||{};
+  return rows.slice(1).map(r=>{
+    const o={};
+    headers.forEach((h,i)=>{const key=map[h]||h;o[key]=r[i]!==undefined?r[i]:''});
+    // Normalise session on load
+    if(o.session)o.session=normaliseSession(o.session);
+    if(name==='POI')o.orderedQty=+o.orderedQty||0;
+    if(name==='OEM')o.qtyReceived=+o.qtyReceived||0;
+    if(name==='CS')o.qtySupplied=+o.qtySupplied||0;
+    return o;
+  }).filter(o=>o.id);
+}
+
 async function loadAllData(){
   setConnStatus('loading','Connecting…');
   try{
     for(const name of Object.keys(HEADERS)){
       const url=`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${name}?key=${API_KEY}`;
       const res=await fetch(url);
-      if(!res.ok){
-        const errData=await res.json().catch(()=>({}));
-        throw new Error(`Sheet "${name}": ${errData.error?.message||res.status}`);
-      }
+      if(!res.ok){const e=await res.json().catch(()=>({}));throw new Error(`Sheet "${name}": ${e.error?.message||res.status}`)}
       const json=await res.json();
-      const rows=(json.values)||[];
-      if(rows.length<2){DB[name]=[];continue;}
-      const headers=rows[0];
-      const map=FIELD_MAP[name]||{};
-      DB[name]=rows.slice(1).map(r=>{
-        const o={};
-        headers.forEach((h,i)=>{
-          const key=map[h]||h;
-          o[key]=r[i]!==undefined?r[i]:'';
-        });
-        // numeric coercions
-        if(name==='POI')o.orderedQty=+o.orderedQty||0;
-        if(name==='OEM')o.qtyReceived=+o.qtyReceived||0;
-        if(name==='CS') o.qtySupplied=+o.qtySupplied||0;
-        return o;
-      }).filter(o=>o.id); // skip empty rows
+      DB[name]=parseSheet(name,(json.values)||[]);
     }
     setConnStatus('ok','Connected ✓');
     toast('Sheet data loaded');
@@ -405,87 +414,65 @@ async function loadAllData(){
   }
 }
 
-// ── AUTO-REFRESH every 60 seconds ─────────────────────────────────────────
 function startAutoRefresh(){
   setInterval(async()=>{
     if(!isConnected)return;
     try{
       for(const name of Object.keys(HEADERS)){
         const url=`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${name}?key=${API_KEY}`;
-        const res=await fetch(url);
-        if(!res.ok)continue;
+        const res=await fetch(url);if(!res.ok)continue;
         const json=await res.json();
-        const rows=(json.values)||[];
-        if(rows.length<2){DB[name]=[];continue;}
-        const headers=rows[0];
-        const map=FIELD_MAP[name]||{};
-        DB[name]=rows.slice(1).map(r=>{
-          const o={};
-          headers.forEach((h,i)=>{const key=map[h]||h;o[key]=r[i]!==undefined?r[i]:'';});
-          if(name==='POI')o.orderedQty=+o.orderedQty||0;
-          if(name==='OEM')o.qtyReceived=+o.qtyReceived||0;
-          if(name==='CS') o.qtySupplied=+o.qtySupplied||0;
-          return o;
-        }).filter(o=>o.id);
+        DB[name]=parseSheet(name,(json.values)||[]);
       }
       render();
     }catch(_){}
-  }, 60000);
+  },60000);
 }
 
-// ── APPEND ROW ─────────────────────────────────────────────────────────────
 async function appendRow(name,data){
-  // Always update local DB first for instant UI
-  DB[name].push(data);
-  render();
+  DB[name].push(data);render();
   if(!isConnected)return;
-  const row=HEADERS[name].map(h=>{
-    // reverse map: header → key
-    const map=FIELD_MAP[name]||{};
-    const key=map[h]||h;
-    return data[key]!==undefined?String(data[key]):'';
-  });
+  const map=FIELD_MAP[name]||{};
+  const row=HEADERS[name].map(h=>{const key=map[h]||h;return data[key]!==undefined?String(data[key]):''});
   const url=`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${name}:append?valueInputOption=USER_ENTERED&key=${API_KEY}`;
   const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({values:[row]})});
   if(!res.ok){const e=await res.json().catch(()=>({}));throw new Error(e.error?.message||'Append failed')}
 }
 
-// ── UPDATE ROW ─────────────────────────────────────────────────────────────
 async function updateRow(name,data){
-  const idx=DB[name].findIndex(r=>r.id===data.id);
-  if(idx<0)return;
-  // Optimistic local update
-  DB[name][idx]=data;
-  render();
+  const idx=DB[name].findIndex(r=>r.id===data.id);if(idx<0)return;
+  DB[name][idx]=data;render();
   if(!isConnected)return;
-  const row=HEADERS[name].map(h=>{
-    const map=FIELD_MAP[name]||{};
-    const key=map[h]||h;
-    return data[key]!==undefined?String(data[key]):'';
-  });
+  const map=FIELD_MAP[name]||{};
+  const row=HEADERS[name].map(h=>{const key=map[h]||h;return data[key]!==undefined?String(data[key]):''});
   const url=`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${name}!A${idx+2}?valueInputOption=USER_ENTERED&key=${API_KEY}`;
   const res=await fetch(url,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({values:[row]})});
   if(!res.ok){const e=await res.json().catch(()=>({}));throw new Error(e.error?.message||'Update failed')}
 }
 
-// ── DEMO DATA (fallback if sheet unreachable) ──────────────────────────────
+// ── DEMO DATA — sessions in 24-25 format ──────────────────────────────────
 function loadDemo(){
   DB.SE=[
-    {id:'SE QID-1',session:'2024-25',seQtnNo:'SE/001/24',seQtnDate:'12-01-2025',customerName:'Rajesh Industries',customerRefNo:'RI/RFQ/001',kindAttention:'Mr. Rajesh Kumar',enquiryDate:'10-01-2025',enquiryDueDate:'20-01-2025',oemName:'OEM-Alpha',makes:'Alfa Laval',itemDescription:'Steel pipe 20mm, Valve 1 inch, Flange 2 inch, Gasket set',orfNo:'ORF/001',sePoNo:'',seFileNo:'SE/FILE/001',remarks:'Urgent requirement',status:'Accepted'},
-    {id:'SE QID-2',session:'2024-25',seQtnNo:'SE/002/24',seQtnDate:'18-01-2025',customerName:'Mehta Exports',customerRefNo:'ME/RFQ/002',kindAttention:'Mr. Mehta',enquiryDate:'16-01-2025',enquiryDueDate:'26-01-2025',oemName:'OEM-Beta',makes:'Grundfos',itemDescription:'Bolt M12, Nut M12',orfNo:'ORF/002',sePoNo:'',seFileNo:'SE/FILE/002',remarks:'Standard order',status:'Pending'},
+    {id:'SE QID-1',session:'24-25',seQtnNo:'SE/001/24',seQtnDate:'12-01-2025',customerName:'Rajesh Industries',customerRefNo:'RI/RFQ/001',kindAttention:'Mr. Rajesh Kumar',enquiryDate:'10-01-2025',enquiryDueDate:'20-01-2025',oemName:'OEM-Alpha',makes:'Alfa Laval',itemDescription:'Steel pipe 20mm, Valve 1 inch, Flange 2 inch, Gasket set',orfNo:'ORF/001',sePoNo:'',seFileNo:'SE/FILE/001',remarks:'Urgent requirement',status:'Accepted'},
+    {id:'SE QID-2',session:'24-25',seQtnNo:'SE/002/24',seQtnDate:'18-01-2025',customerName:'Mehta Exports',customerRefNo:'ME/RFQ/002',kindAttention:'Mr. Mehta',enquiryDate:'16-01-2025',enquiryDueDate:'26-01-2025',oemName:'OEM-Beta',makes:'Grundfos',itemDescription:'Bolt M12, Nut M12',orfNo:'ORF/002',sePoNo:'',seFileNo:'SE/FILE/002',remarks:'Standard order',status:'Pending'},
+    {id:'SE QID-3',session:'25-26',seQtnNo:'SE/001/25',seQtnDate:'05-04-2025',customerName:'Rajesh Industries',customerRefNo:'RI/RFQ/010',kindAttention:'Mr. Rajesh Kumar',enquiryDate:'03-04-2025',enquiryDueDate:'13-04-2025',oemName:'OEM-Delta',makes:'Siemens',itemDescription:'Pump set 5HP, Control panel',orfNo:'ORF/010',sePoNo:'',seFileNo:'SE/FILE/010',remarks:'New financial year',status:'Pending'},
+    {id:'SE QID-4',session:'25-26',seQtnNo:'SE/002/25',seQtnDate:'10-04-2025',customerName:'Singh Supply Co.',customerRefNo:'SS/RFQ/005',kindAttention:'Mr. Singh',enquiryDate:'08-04-2025',enquiryDueDate:'18-04-2025',oemName:'OEM-Alpha',makes:'Alfa Laval',itemDescription:'Heat exchanger plates',orfNo:'ORF/011',sePoNo:'',seFileNo:'SE/FILE/011',remarks:'',status:'Pending'},
   ];
   DB.SRE=[
-    {id:'SER QID-1',session:'2024-25',serviceQtnNo:'SER/001/24',serviceQtnDate:'10-01-2025',customerName:'Patel Industries',customerRefNo:'PI/RFQ/001',kindAttention:'Mr. Patel',enquiryDate:'08-01-2025',itemDescription:'Annual maintenance service',qtyMandays:'10 Mandays',uom:'Mandays',totalPrice:'120000',poNo:'',remarks:'',status:'Accepted'},
+    {id:'SER QID-1',session:'24-25',serviceQtnNo:'SER/001/24',serviceQtnDate:'10-01-2025',customerName:'Patel Industries',customerRefNo:'PI/RFQ/001',kindAttention:'Mr. Patel',enquiryDate:'08-01-2025',itemDescription:'Annual maintenance service',qtyMandays:'10 Mandays',uom:'Mandays',totalPrice:'120000',poNo:'',remarks:'',status:'Accepted'},
+    {id:'SER QID-2',session:'25-26',serviceQtnNo:'SER/001/25',serviceQtnDate:'06-04-2025',customerName:'Mehta Exports',customerRefNo:'ME/RFQ/010',kindAttention:'Mr. Mehta',enquiryDate:'04-04-2025',itemDescription:'Quarterly service visit',qtyMandays:'5 Mandays',uom:'Mandays',totalPrice:'65000',poNo:'',remarks:'',status:'Pending'},
   ];
   DB.BO=[
-    {id:'BO ID-1',shreeBudgetaryNo:'BO/001/24',session:'2024-25',makes:'Various',shreeBoDate:'08-01-2025',customerName:'Singh Supply Co.',kindAttention:'Mr. Singh',boEnquiryDate:'06-01-2025',itemDescription:'Bulk order pipes and fittings',qty:'100',uom:'Nos',totalPrice:'800000',remark:'',status:'Pending'},
+    {id:'BO ID-1',shreeBudgetaryNo:'BO/001/24',session:'24-25',makes:'Various',shreeBoDate:'08-01-2025',customerName:'Singh Supply Co.',kindAttention:'Mr. Singh',boEnquiryDate:'06-01-2025',itemDescription:'Bulk order pipes and fittings',qty:'100',uom:'Nos',totalPrice:'800000',remark:'',status:'Pending'},
+    {id:'BO ID-2',shreeBudgetaryNo:'BO/001/25',session:'25-26',makes:'Grundfos',shreeBoDate:'07-04-2025',customerName:'Patel Industries',kindAttention:'Mr. Patel',boEnquiryDate:'05-04-2025',itemDescription:'Pump assemblies',qty:'20',uom:'Nos',totalPrice:'450000',remark:'New session order',status:'Pending'},
   ];
   DB.AQ=[
-    {id:'TE QID-1',session:'2024-25',teQtnNo:'TE/001/24',teQtnDate:'15-01-2025',customerName:'Mehta Exports',customerRefNo:'ME/RFQ/003',kindAttention:'Mr. Mehta',enquiryDate:'13-01-2025',enquiryDueDate:'23-01-2025',oemName:'OEM-Gamma',makes:'Siemens',itemDescription:'Assorted hardware',tePORef:'',ourFileNo:'TE/FILE/001',remarks:'',orfNo:'ORF/003',status:'Pending'},
+    {id:'TE QID-1',session:'24-25',teQtnNo:'TE/001/24',teQtnDate:'15-01-2025',customerName:'Mehta Exports',customerRefNo:'ME/RFQ/003',kindAttention:'Mr. Mehta',enquiryDate:'13-01-2025',enquiryDueDate:'23-01-2025',oemName:'OEM-Gamma',makes:'Siemens',itemDescription:'Assorted hardware',tePORef:'',ourFileNo:'TE/FILE/001',remarks:'',orfNo:'ORF/003',status:'Pending'},
+    {id:'TE QID-2',session:'25-26',teQtnNo:'TE/001/25',teQtnDate:'09-04-2025',customerName:'Rajesh Industries',customerRefNo:'RI/RFQ/011',kindAttention:'Mr. Rajesh Kumar',enquiryDate:'07-04-2025',enquiryDueDate:'17-04-2025',oemName:'OEM-Alpha',makes:'ABB',itemDescription:'VFD drives 11kW',tePORef:'',ourFileNo:'TE/FILE/010',remarks:'',orfNo:'ORF/012',status:'Pending'},
   ];
   DB.PO=[
-    {id:'PO-0001',quotId:'SE QID-1',quotType:'SE',session:'2024-25',sePONum:'SE-PO-001',seFileNum:'SE/FILE/001',sePOEntryDate:'14-01-2025',customerName:'Rajesh Industries',customerTenderRef:'RI/TEND/001',customerPONum:'CUST-PO-001',customerPODate:'13-01-2025',customerDueDate:'14-02-2025',poValue:'150000',gemPONum:'',gemPODate:'',make:'Alfa Laval',itemDescription:'Steel pipe 20mm, Valve 1 inch',oemPONo:'OEM-PO-001',oemPODate:'15-01-2025',oemSONum:'OEM-SO-001',gemAMCPayment:'No',gemAMCPaymentAmount:'',nmDCSPNum:'',remarks:'',status:'Open'},
-    {id:'PO-0002',quotId:'SE QID-1',quotType:'SE',session:'2024-25',sePONum:'SE-PO-002',seFileNum:'SE/FILE/001',sePOEntryDate:'15-01-2025',customerName:'Rajesh Industries',customerTenderRef:'RI/TEND/001',customerPONum:'CUST-PO-002',customerPODate:'14-01-2025',customerDueDate:'28-02-2025',poValue:'80000',gemPONum:'GEM-001',gemPODate:'16-01-2025',make:'Alfa Laval',itemDescription:'Gasket set',oemPONo:'OEM-PO-002',oemPODate:'16-01-2025',oemSONum:'OEM-SO-002',gemAMCPayment:'Yes',gemAMCPaymentAmount:'5000',nmDCSPNum:'NMDC-001',remarks:'Partial order',status:'Open'},
+    {id:'PO-0001',quotId:'SE QID-1',quotType:'SE',session:'24-25',sePONum:'SE-PO-001',seFileNum:'SE/FILE/001',sePOEntryDate:'14-01-2025',customerName:'Rajesh Industries',customerTenderRef:'RI/TEND/001',customerPONum:'CUST-PO-001',customerPODate:'13-01-2025',customerDueDate:'14-02-2025',poValue:'150000',gemPONum:'',gemPODate:'',make:'Alfa Laval',itemDescription:'Steel pipe 20mm, Valve 1 inch',oemPONo:'OEM-PO-001',oemPODate:'15-01-2025',oemSONum:'OEM-SO-001',gemAMCPayment:'No',gemAMCPaymentAmount:'',nmDCSPNum:'',remarks:'',status:'Open'},
+    {id:'PO-0002',quotId:'SE QID-1',quotType:'SE',session:'24-25',sePONum:'SE-PO-002',seFileNum:'SE/FILE/001',sePOEntryDate:'15-01-2025',customerName:'Rajesh Industries',customerTenderRef:'RI/TEND/001',customerPONum:'CUST-PO-002',customerPODate:'14-01-2025',customerDueDate:'28-02-2025',poValue:'80000',gemPONum:'GEM-001',gemPODate:'16-01-2025',make:'Alfa Laval',itemDescription:'Gasket set',oemPONo:'OEM-PO-002',oemPODate:'16-01-2025',oemSONum:'OEM-SO-002',gemAMCPayment:'Yes',gemAMCPaymentAmount:'5000',nmDCSPNum:'NMDC-001',remarks:'Partial order',status:'Open'},
   ];
   DB.POI=[
     {id:'POI-0001',poId:'PO-0001',quotId:'SE QID-1',itemName:'Steel pipe 20mm',itemDescription:'20mm dia steel pipe IS:1239',orderedQty:80,uom:'Nos',oemDetails:'OEM-Alpha, Alfa Laval',oemInvoiceNo:'',oemInvoiceDate:'',sePONo:'SE-PO-001',seFileNo:'SE/FILE/001'},
@@ -511,11 +498,7 @@ async function quickAccept(type,id,e){
   catch(err){toast('Error: '+err.message)}
 }
 
-// ── HELPERS ────────────────────────────────────────────────────────────────
-function nextId(prefix,arr){
-  const max=arr.length?Math.max(...arr.map(r=>parseInt((r.id||'').split('-').pop())||0)):0;
-  return`${prefix}-${String(max+1).padStart(4,'0')}`;
-}
+// ── SUPPLY HELPERS ─────────────────────────────────────────────────────────
 function oemRcvd(poiId){return DB.OEM.filter(r=>r.poiId===poiId).reduce((s,r)=>s+(+r.qtyReceived||0),0)}
 function csSupp(poiId){return DB.CS.filter(r=>r.poiId===poiId).reduce((s,r)=>s+(+r.qtySupplied||0),0)}
 function poiQtyRcvd(poi){return oemRcvd(poi.id)}
@@ -523,15 +506,17 @@ function poiQtyPendOEM(poi){return Math.max(0,(poi.orderedQty||0)-oemRcvd(poi.id
 function poiQtySupplCust(poi){return csSupp(poi.id)}
 function poiQtyPendCust(poi){return Math.max(0,(poi.orderedQty||0)-csSupp(poi.id))}
 function poiSt(poi){const p=poi.orderedQty?Math.round(oemRcvd(poi.id)/poi.orderedQty*100):0;return p>=100?'Complete':p>0?'Partial':'Pending'}
-function sb(s){const m={Accepted:'b-ok',Active:'b-ok',Complete:'b-ok',Open:'b-ok',Partial:'b-warn',Pending:'b-warn',Rejected:'b-danger',Sent:'b-info',Draft:'b-gray',Closed:'b-gray',Close:'b-gray'};return`<span class="badge ${m[s]||'b-gray'}">${s}</span>`}
-function prg(pct){const c=pct>=100?'pf-ok':pct>=40?'pf-warn':pct>0?'pf-danger':'pf-0';return`<div class="prog-w"><div class="prog"><div class="pf ${c}" style="width:${Math.min(pct,100)}%"></div></div><span style="font-size:12px;color:#000;font-weight:500">${pct}%</span></div>`}
+
+// ── DISPLAY HELPERS ────────────────────────────────────────────────────────
+function sb(s){const m={Accepted:'b-ok',Active:'b-ok',Complete:'b-ok',Open:'b-ok',Partial:'b-warn',Pending:'b-warn',Rejected:'b-danger',Sent:'b-info',Draft:'b-gray',Closed:'b-gray',Close:'b-gray'};return`<span class="badge ${m[s]||'b-gray'}">${s||'—'}</span>`}
 function fmt(v){return(+v||0).toLocaleString('en-IN')}
 function esc(v){return String(v||'').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
 function d(v){return v?`<span class="mono">${v}</span>`:`<span class="dash">—</span>`}
 function dc(v){return v||`<span class="dash">—</span>`}
+function mval(v){return v?`₹${fmt(v)}`:`<span class="dash">—</span>`}
 
 // ── NAVIGATION ─────────────────────────────────────────────────────────────
-function resetState(){selPO=null;selPOI=null;sq='';sf='all';selectedRows.clear();editingRow=null;subEditingRow=null}
+function resetState(){selPOI=null;sq='';sf='all';selectedRows.clear();editingRow=null;subEditingRow=null}
 
 function switchTab(t){
   curTab=t;curRec=null;curType=null;viewMode='list';resetState();
@@ -557,25 +542,149 @@ function goBack(){
   if(viewMode==='po'){
     const po=curRec;
     const quot=DB[po.quotType]?.find(q=>q.id===po.quotId);
-    if(quot){curRec=quot;curType=po.quotType;viewMode='quot';selPO=po.id;selPOI=null;subEditingRow=null;editingRow=null;}
+    if(quot){curRec=quot;curType=po.quotType;viewMode='quot';subEditingRow=null;editingRow=null;}
     else{curRec=null;curType=null;viewMode='list';resetState();}
   }else{curRec=null;curType=null;viewMode='list';resetState();}
   render();
 }
-function selPOFn(id){selPO=id===selPO?null:id;selPOI=null;subEditingRow=null;editingRow=null;render()}
 function selPOIFn(id,e){if(e)e.stopPropagation();selPOI=id===selPOI?null:id;subEditingRow=null;editingRow=null;render()}
 
 // ── CHECKBOX ───────────────────────────────────────────────────────────────
 function toggleSelectAll(checked){const rows=filterRows(curTab);if(checked)rows.forEach(r=>selectedRows.add(r.id));else selectedRows.clear();render()}
 function toggleSelectRow(id,checked){if(checked)selectedRows.add(id);else selectedRows.delete(id);render()}
+
+// ── FILTER ROWS ────────────────────────────────────────────────────────────
 function filterRows(tab){
   let rows=DB[tab]||[];
   if(sq){const q=sq.toLowerCase();rows=rows.filter(r=>Object.values(r).some(v=>String(v).toLowerCase().includes(q)))}
   if(sf!=='all')rows=rows.filter(r=>r.status===sf);
+
+  // Apply column filters (only for quotation tabs)
+  if(colFilters[tab]){
+    for(const [field,vals] of Object.entries(colFilters[tab])){
+      if(vals && vals.size>0){
+        rows=rows.filter(r=>vals.has(String(r[field]||'')));
+      }
+    }
+  }
   return rows;
 }
 
-// ── INLINE EDIT ────────────────────────────────────────────────────────────
+// ── COLUMN FILTER STATE HELPERS ────────────────────────────────────────────
+// Which fields are filterable per quotation tab
+const COL_FILTER_FIELDS={
+  SE:  ['session','customerName','oemName'],
+  SRE: ['session','customerName'],
+  BO:  ['session','customerName'],
+  AQ:  ['session','customerName','oemName'],
+};
+
+function hasActiveColFilter(tab){
+  if(!colFilters[tab])return false;
+  return Object.values(colFilters[tab]).some(s=>s&&s.size>0);
+}
+function colFilterActive(tab,field){
+  return colFilters[tab]?.[field]?.size>0;
+}
+function getUniqueVals(tab,field){
+  return [...new Set((DB[tab]||[]).map(r=>String(r[field]||'')).filter(Boolean))].sort();
+}
+
+// ── COLUMN FILTER DROPDOWN ─────────────────────────────────────────────────
+let cfState={tab:null,field:null,label:null,pending:new Set()};
+
+function cfOpen(tab, field, label, btnEl, e){
+  e.stopPropagation();
+  // Toggle — if already open for same field, close
+  const dd=document.getElementById('cf-dropdown');
+  if(dd.style.display!=='none' && cfState.tab===tab && cfState.field===field){
+    cfClose(); return;
+  }
+  cfState={tab,field,label,pending:new Set(colFilters[tab]?.[field]||[])};
+  document.getElementById('cf-title').textContent=label;
+  document.getElementById('cf-search-input').value='';
+  cfRenderList();
+
+  // Position dropdown below the button
+  const rect=btnEl.getBoundingClientRect();
+  dd.style.display='block';
+  // Adjust position to avoid going off screen
+  const ddW=220;
+  let left=rect.left;
+  if(left+ddW>window.innerWidth-8)left=window.innerWidth-ddW-8;
+  dd.style.left=left+'px';
+  dd.style.top=(rect.bottom+4)+'px';
+}
+
+function cfRenderList(){
+  const {tab,field,pending}=cfState;
+  const search=document.getElementById('cf-search-input')?.value?.toLowerCase()||'';
+  let vals=getUniqueVals(tab,field);
+  if(search)vals=vals.filter(v=>v.toLowerCase().includes(search));
+  const list=document.getElementById('cf-list');
+  if(!vals.length){list.innerHTML=`<div class="cf-empty">No values found</div>`;return;}
+  list.innerHTML=vals.map(v=>{
+    const checked=pending.has(v);
+    const vid='cf-v-'+v.replace(/[^a-z0-9]/gi,'_');
+    return`<div class="cf-item" onclick="cfToggleVal('${esc(v)}')">
+      <input type="checkbox" id="${vid}" ${checked?'checked':''} onclick="event.stopPropagation();cfToggleVal('${esc(v)}')"/>
+      <label for="${vid}">${esc(v)||'—'}</label>
+    </div>`;
+  }).join('');
+}
+
+function cfToggleVal(v){
+  if(cfState.pending.has(v))cfState.pending.delete(v);
+  else cfState.pending.add(v);
+  cfRenderList();
+}
+
+function cfClearAll(){
+  cfState.pending.clear();
+  cfRenderList();
+}
+
+function cfApply(){
+  const {tab,field,pending}=cfState;
+  if(!colFilters[tab])colFilters[tab]={};
+  colFilters[tab][field]=new Set(pending);
+  cfClose();
+  render();
+}
+
+function cfClose(){
+  document.getElementById('cf-dropdown').style.display='none';
+  cfState={tab:null,field:null,label:null,pending:new Set()};
+}
+
+// Close dropdown on outside click
+document.addEventListener('click',e=>{
+  const dd=document.getElementById('cf-dropdown');
+  if(dd&&dd.style.display!=='none'&&!dd.contains(e.target)){
+    cfClose();
+  }
+});
+
+// ── SESSION GROUP HELPERS ──────────────────────────────────────────────────
+function toggleSessionGroup(tab, session, e){
+  e.stopPropagation();
+  if(collapsedSessions[tab].has(session))collapsedSessions[tab].delete(session);
+  else collapsedSessions[tab].add(session);
+  render();
+}
+
+function groupBySession(rows){
+  const order=[];
+  const map={};
+  for(const r of rows){
+    const s=r.session||'(No Session)';
+    if(!map[s]){map[s]=[];order.push(s);}
+    map[s].push(r);
+  }
+  return order.map(s=>({session:s,rows:map[s]}));
+}
+
+// ── INLINE EDIT HELPERS ────────────────────────────────────────────────────
 function startEdit(type,id,e){e.stopPropagation();editingRow={type,id};render()}
 function cancelEdit(){editingRow=null;render()}
 async function saveEdit(type,id){
@@ -603,40 +712,13 @@ function readFields(obj,attr){
   return obj;
 }
 
-// ── IE BUILDERS ────────────────────────────────────────────────────────────
+// ── INLINE EDIT BUILDERS ───────────────────────────────────────────────────
 function ieIn(f,v,t,w,p='data-ie'){const val=t==='date'?dmyToISO(v||''):(v??'');return`<input class="ie-input" type="${t||'text'}" ${p}-field="${f}" value="${esc(val)}" style="min-width:${w||'80px'}" onclick="event.stopPropagation()"/>`}
 function ieSel(f,v,opts,p='data-ie'){return`<select class="ie-select" ${p}-field="${f}" onclick="event.stopPropagation()">${opts.map(s=>`<option${s===v?' selected':''}>${s}</option>`).join('')}</select>`}
 function ieTxt(f,v,w,p='data-ie'){return`<input class="ie-input" type="text" ${p}-field="${f}" value="${esc(v||'')}" style="min-width:${w||'100px'}" onclick="event.stopPropagation()"/>`}
 function ieAct(saveFn,cancelFn){return`<span class="ie-actions"><button class="btn btn-add btn-xs" onclick="event.stopPropagation();${saveFn}">✓</button><button class="btn btn-xs" onclick="event.stopPropagation();${cancelFn}">✕</button></span>`}
 
-// ── PIPELINE BAR ───────────────────────────────────────────────────────────
-function pipelineBar(quotId,quotType,poId,poiId){
-  const quot=quotId?DB[quotType||'SE']?.find(r=>r.id===quotId):null;
-  const allPOs=quotId?DB.PO.filter(p=>p.quotId===quotId):[];
-  const po=poId?DB.PO.find(p=>p.id===poId):null;
-  const allPOIs=poId?DB.POI.filter(p=>p.poId===poId):quotId?DB.POI.filter(p=>allPOs.map(x=>x.id).includes(p.poId)):[];
-  const oemCnt=poiId?DB.OEM.filter(o=>o.poiId===poiId).length:poId?DB.OEM.filter(o=>o.poId===poId).length:quotId?DB.OEM.filter(o=>o.quotId===quotId).length:0;
-  const csCnt=poiId?DB.CS.filter(c=>c.poiId===poiId).length:poId?DB.CS.filter(c=>c.poId===poId).length:quotId?DB.CS.filter(c=>c.quotId===quotId).length:0;
-  const arr=`<div class="pipe-arr">›</div>`;
-  function node(dotCls,active,dimmed,main,sub,click){return`<div class="pipe-step"><div class="pipe-node${active?' active':dimmed?' dimmed':''}" ${click?`onclick="${click}"`:''}>
-    <div class="pipe-dot ${dotCls}${active?' active':''}"></div>
-    <div><div class="pipe-label-main">${main}</div><div class="pipe-label-sub">${sub}</div></div>
-  </div>${arr}</div>`}
-  function nodeNoArr(dotCls,active,dimmed,main,sub,click){return`<div class="pipe-step"><div class="pipe-node${active?' active':dimmed?' dimmed':''}" ${click?`onclick="${click}"`:''}>
-    <div class="pipe-dot ${dotCls}${active?' active':''}"></div>
-    <div><div class="pipe-label-main">${main}</div><div class="pipe-label-sub">${sub}</div></div>
-  </div></div>`}
-  let h=`<div class="pipeline-bar">`;
-  if(quot)h+=node('pdq',viewMode==='quot'&&!poId&&!poiId,false,quotId,`${quotType}·${quot.customerName||''}`,`openQuot('${quotType}','${esc(quotId)}')`);
-  if(po)h+=node('pdpo',viewMode==='po'&&!poiId,false,poId,`${po.customerName||po.sePONum||''}`,`openPO('${poId}')`);
-  else if(allPOs.length)h+=node('pdpo',false,true,`${allPOs.length} PO${allPOs.length>1?'s':''}`,`Select PO to focus`,'');
-  if(allPOIs.length)h+=node('pdpoi',false,true,`${allPOIs.length} Item${allPOIs.length>1?'s':''}`,`Click POI row to open`,'');
-  h+=node('pdoem',false,!oemCnt,`${oemCnt} OEM Receipt${oemCnt!==1?'s':''}`,oemCnt?'From OEM supplier':'No receipts yet','');
-  h+=nodeNoArr('pdcs',false,!csCnt,`${csCnt} Dispatch${csCnt!==1?'es':''}`,csCnt?'To customer':'No dispatches yet','');
-  return h+`</div>`;
-}
-
-// ── RENDER ─────────────────────────────────────────────────────────────────
+// ── RENDER DISPATCH ────────────────────────────────────────────────────────
 function render(){
   const m=document.getElementById('main');if(!m)return;
   if(viewMode==='quot')m.innerHTML=rQuot();
@@ -644,9 +726,15 @@ function render(){
   else m.innerHTML=rTable();
 }
 
-// ── LABEL MAPS ─────────────────────────────────────────────────────────────
 const LABELS={SE:'Shree Quotation',SRE:'Shree Service Quotation',BO:'Budgetary Offer',AQ:'Techno Quotation',PO:'Purchase Orders',POI:'PO Line Items',OEM:'OEM Supply',CS:'Customer Supply'};
 const STAT_OPTS={SE:['Pending','Accepted','Rejected'],SRE:['Pending','Accepted','Rejected'],BO:['Pending','Accepted','Rejected'],AQ:['Pending','Accepted','Rejected'],PO:['Open','Close'],POI:['Pending','Partial','Complete'],OEM:[],CS:[]};
+
+// ── FILTER BUTTON BUILDER ──────────────────────────────────────────────────
+// Returns HTML for the filter funnel button; also shows active indicator dot
+function cfBtn(tab, field, label){
+  const active=colFilterActive(tab,field);
+  return`<button class="col-filter-btn${active?' active':''}" title="Filter by ${label}" onclick="event.stopPropagation();cfOpen('${tab}','${field}','${label}',this,event)">▼</button>${active?'<span class="filter-active-dot"></span>':''}`;
+}
 
 // ── TABLE VIEW ─────────────────────────────────────────────────────────────
 function rTable(){
@@ -655,8 +743,14 @@ function rTable(){
   const sfH=opts.length?`<select class="f-select" onchange="sf=this.value;render()"><option value="all">All status</option>${opts.map(o=>`<option value="${o}"${sf===o?' selected':''}>${o}</option>`).join('')}</select>`:'';
   const nSel=selectedRows.size;
   const allChk=rows.length>0&&rows.every(r=>selectedRows.has(r.id));
+
+  // Active filter count badge for quotation tabs
+  const isQuotTab=['SE','SRE','BO','AQ'].includes(curTab);
+  const activeFiltersCount=isQuotTab?Object.values(colFilters[curTab]||{}).filter(s=>s&&s.size>0).length:0;
+  const filterBadge=activeFiltersCount>0?`<span style="display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:12px;background:var(--accent);color:#fff;font-size:11px;font-weight:600">${activeFiltersCount} filter${activeFiltersCount>1?'s':''} <span style="cursor:pointer;opacity:.8" onclick="colFilters['${curTab}']={};render()">✕</span></span>`:'';
+
   let h=`<div class="topbar">
-    <div class="tb-l"><span class="tb-title">${LABELS[curTab]}</span></div>
+    <div class="tb-l"><span class="tb-title">${LABELS[curTab]}</span>${filterBadge?`<span style="margin-left:8px">${filterBadge}</span>`:''}</div>
     <div class="tb-r">
       <input class="s-input" placeholder="Search…" value="${sq}" oninput="sq=this.value;render()"/>
       ${sfH}
@@ -664,31 +758,78 @@ function rTable(){
     </div>
   </div>
   <div class="tab-bar">${['SE','SRE','BO','AQ','PO','POI','OEM','CS'].map(t=>`<div class="tab${t===curTab?' on':''}" onclick="switchTab('${t}')">${LABELS[t]||t}</div>`).join('')}</div>`;
+
   if(nSel>0)h+=`<div class="bulk-bar"><span>${nSel} row${nSel>1?'s':''} selected</span><button class="btn btn-sm" onclick="selectedRows.clear();render()">✕ Clear</button></div>`;
+
   h+=`<div style="padding:14px 18px"><div class="section"><div class="t-wrap"><table><thead><tr>
     <th><input type="checkbox" class="cb" onchange="toggleSelectAll(this.checked)" ${allChk?'checked':''}></th>
     ${tHd(curTab)}</tr></thead><tbody>`;
-  if(!rows.length)h+=`<tr><td></td><td colspan="40" class="empty">No records — click "+ New" to add</td></tr>`;
-  else rows.forEach(r=>h+=tRow(curTab,r));
+
+  // For quotation tabs: group by session; for others: flat list
+  if(isQuotTab){
+    if(!rows.length){
+      h+=`<tr><td></td><td colspan="40" class="empty">No records — click "+ New" to add</td></tr>`;
+    } else {
+      const groups=groupBySession(rows);
+      groups.forEach(({session,rows:gRows})=>{
+        const collapsed=collapsedSessions[curTab].has(session);
+
+        h+=`<tr class="group-hdr-row" onclick="toggleSessionGroup('${curTab}','${esc(session)}',event)">
+          <td style="text-align:center;padding:0 8px"><div class="group-chevron${collapsed?' collapsed':''}">▼</div></td>
+          <td colspan="40">
+            <div class="group-hdr-inner">
+              <span class="group-session-label">Session ${session}</span>
+            </div>
+          </td>
+        </tr>`;
+
+        if(!collapsed){
+          gRows.forEach(r=>h+=tRow(curTab,r));
+        }
+      });
+    }
+  } else {
+    if(!rows.length)h+=`<tr><td></td><td colspan="40" class="empty">No records — click "+ New" to add</td></tr>`;
+    else rows.forEach(r=>h+=tRow(curTab,r));
+  }
+
   return h+`</tbody></table></div></div></div>`;
 }
-
-// ── ALL-FIELD TABLE HEADERS ────────────────────────────────────────────────
+// ── TABLE HEADERS (with filter buttons for quotation tabs) ─────────────────
 function tHd(t){
-  const qAccept='<th style="width:36px"></th>';
-  return{
-    SE: `${qAccept}<th>ID</th><th>Session</th><th>SE QTN No.</th><th>SE QTN Date</th><th>Customer Name</th><th>Cust. Ref No.</th><th>Kind Attention</th><th>Enquiry Date</th><th>Enquiry Due Date</th><th>OEM Name</th><th>Makes</th><th>Item Description</th><th>ORF No.</th><th>SE PO No.</th><th>SE File No.</th><th>Remarks</th><th>Status</th><th>POs</th><th>Actions</th>`,
-    SRE:`${qAccept}<th>ID</th><th>Session</th><th>Service QTN No.</th><th>Service QTN Date</th><th>Customer Name</th><th>Cust. Ref No.</th><th>Kind Attention</th><th>Enquiry Date</th><th>Item Description</th><th>Qty / Mandays</th><th>UOM</th><th>Total Price</th><th>PO No.</th><th>Remarks</th><th>Status</th><th>POs</th><th>Actions</th>`,
-    BO: `${qAccept}<th>ID</th><th>Budgetary No.</th><th>Session</th><th>Makes</th><th>BO Date</th><th>Customer Name</th><th>Kind Attention</th><th>Enquiry Date</th><th>Item Description</th><th>Qty</th><th>UOM</th><th>Total Price</th><th>Remark</th><th>Status</th><th>POs</th><th>Actions</th>`,
-    AQ: `${qAccept}<th>ID</th><th>Session</th><th>TE QTN No.</th><th>TE QTN Date</th><th>Customer Name</th><th>Cust. Ref No.</th><th>Kind Attention</th><th>Enquiry Date</th><th>Enquiry Due Date</th><th>OEM Name</th><th>Makes</th><th>Item Description</th><th>TE PO Ref</th><th>Our File No.</th><th>ORF No.</th><th>Remarks</th><th>Status</th><th>POs</th><th>Actions</th>`,
-    PO: `<th>PO ID</th><th>Quot. ID</th><th>Quot. Type</th><th>Session</th><th>SE PO Num</th><th>SE File Num</th><th>SE PO Entry Date</th><th>Customer Name</th><th>Cust. Tender Ref</th><th>Customer PO No.</th><th>Cust. PO Date</th><th>Cust. Due Date</th><th>PO Value (₹)</th><th>GEM PO Num</th><th>GEM PO Date</th><th>Make</th><th>Item Description</th><th>OEM PO No.</th><th>OEM PO Date</th><th>OEM SO Num</th><th>GEM AMC Pay</th><th>GEM AMC Amt</th><th>NMDC SP Num</th><th>Remarks</th><th>Status</th><th>Items</th><th>OEM Progress</th><th>Actions</th>`,
+  // Helper: th with optional filter button
+  const th=(label,field,tab)=>{
+    const showFilter=tab && ['SE','SRE','BO','AQ'].includes(tab) && COL_FILTER_FIELDS[tab]?.includes(field);
+    if(showFilter){
+      return `<th style="white-space:nowrap">${label} ${cfBtn(tab,field,label)}</th>`;
+    }
+    return `<th>${label}</th>`;
+  };
+
+  // One blank header cell ONLY for quotation tables
+  const actionCol = `<th style="width:36px"></th>`;
+
+  const m={
+    SE:`${actionCol}${th('ID','id','')}${th('Session','session','SE')}${th('SE QTN No.','seQtnNo','')}${th('SE QTN Date','seQtnDate','')}${th('Customer Name','customerName','SE')}${th('Cust. Ref No.','customerRefNo','')}${th('Kind Attention','kindAttention','')}${th('Enquiry Date','enquiryDate','')}${th('Enquiry Due Date','enquiryDueDate','')}${th('OEM Name','oemName','SE')}${th('Makes','makes','')}${th('Item Description','itemDescription','')}${th('ORF No.','orfNo','')}${th('SE PO No.','sePoNo','')}${th('SE File No.','seFileNo','')}${th('Remarks','remarks','')}${th('Status','status','')}${th('POs','','')}${th('Actions','','')}`,
+
+    SRE:`${actionCol}${th('ID','id','')}${th('Session','session','SRE')}${th('Service QTN No.','serviceQtnNo','')}${th('Service QTN Date','serviceQtnDate','')}${th('Customer Name','customerName','SRE')}${th('Cust. Ref No.','customerRefNo','')}${th('Kind Attention','kindAttention','')}${th('Enquiry Date','enquiryDate','')}${th('Item Description','itemDescription','')}${th('Qty / Mandays','qtyMandays','')}${th('UOM','uom','')}${th('Total Price','totalPrice','')}${th('PO No.','poNo','')}${th('Remarks','remarks','')}${th('Status','status','')}${th('POs','','')}${th('Actions','','')}`,
+
+    BO:`${actionCol}${th('ID','id','')}${th('Session','session','BO')}${th('Budgetary No.','shreeBudgetaryNo','')}${th('Makes','makes','')}${th('BO Date','shreeBoDate','')}${th('Customer Name','customerName','BO')}${th('Kind Attention','kindAttention','')}${th('Enquiry Date','boEnquiryDate','')}${th('Item Description','itemDescription','')}${th('Qty','qty','')}${th('UOM','uom','')}${th('Total Price','totalPrice','')}${th('Remark','remark','')}${th('Status','status','')}${th('POs','','')}${th('Actions','','')}`,
+
+    AQ:`${actionCol}${th('ID','id','')}${th('Session','session','AQ')}${th('TE QTN No.','teQtnNo','')}${th('TE QTN Date','teQtnDate','')}${th('Customer Name','customerName','AQ')}${th('Cust. Ref No.','customerRefNo','')}${th('Kind Attention','kindAttention','')}${th('Enquiry Date','enquiryDate','')}${th('Enquiry Due Date','enquiryDueDate','')}${th('OEM Name','oemName','AQ')}${th('Makes','makes','')}${th('Item Description','itemDescription','')}${th('TE PO Ref','tePORef','')}${th('Our File No.','ourFileNo','')}${th('ORF No.','orfNo','')}${th('Remarks','remarks','')}${th('Status','status','')}${th('POs','','')}${th('Actions','','')}`,
+
+    PO:`<th>PO ID</th><th>Quot. ID</th><th>Quot. Type</th><th>Session</th><th>SE PO Num</th><th>SE File Num</th><th>SE PO Entry Date</th><th>Customer Name</th><th>Cust. Tender Ref</th><th>Customer PO No.</th><th>Cust. PO Date</th><th>Cust. Due Date</th><th>PO Value (₹)</th><th>GEM PO Num</th><th>GEM PO Date</th><th>Make</th><th>Item Description</th><th>OEM PO No.</th><th>OEM PO Date</th><th>OEM SO Num</th><th>GEM AMC Pay</th><th>GEM AMC Amt</th><th>NMDC SP Num</th><th>Remarks</th><th>Status</th><th>Actions</th>`,
+
     POI:`<th>POI ID</th><th>PO ID</th><th>Quot. ID</th><th>Item Name</th><th>Item Desc./CAT No</th><th>Ordered Qty</th><th>UOM</th><th>OEM Details</th><th>OEM Invoice No</th><th>OEM Invoice Date</th><th>SE PO NO</th><th>SE File NO</th><th>Qty Rcvd from OEM</th><th>Qty Pend. from OEM</th><th>Qty Supplied to Cust.</th><th>Qty Pend. to Cust.</th><th>Status</th><th>Actions</th>`,
+
     OEM:`<th>ID</th><th>POI ID</th><th>PO ID</th><th>Quot. ID</th><th>Supplier</th><th>Item Name</th><th>Date</th><th>Qty Received</th><th>Remarks</th><th>Actions</th>`,
-    CS: `<th>ID</th><th>POI ID</th><th>PO ID</th><th>Quot. ID</th><th>OEM Ref</th><th>Customer</th><th>Item Name</th><th>Date</th><th>Qty Supplied</th><th>Remarks</th><th>Actions</th>`,
-  }[t]||'';
+
+    CS:`<th>ID</th><th>POI ID</th><th>PO ID</th><th>Quot. ID</th><th>OEM Ref</th><th>Customer</th><th>Item Name</th><th>Date</th><th>Qty Supplied</th><th>Remarks</th><th>Actions</th>`,
+  };
+
+  return m[t] || '';
 }
 
-// ── ALL-FIELD TABLE ROWS ───────────────────────────────────────────────────
 function tRow(t,r){
   const isEd=editingRow?.type===t&&editingRow?.id===r.id;
   const isSel=selectedRows.has(r.id);
@@ -698,35 +839,32 @@ function tRow(t,r){
   if(['SE','SRE','BO','AQ'].includes(t)){
     const pos=DB.PO.filter(p=>p.quotId===r.id);
     const pl=pos.length?pos.map(p=>`<span class="id-link" onclick="event.stopPropagation();openPO('${p.id}')">${p.id}</span>`).join(', '):`<span class="dash">—</span>`;
-    const tickBtn=r.status!=='Accepted'
+    const tick=r.status!=='Accepted'
       ?`<td onclick="event.stopPropagation()" style="text-align:center;padding:0 4px"><button class="accept-tick" title="Quick accept" onclick="quickAccept('${t}','${esc(r.id)}',event)">✓</button></td>`
       :`<td style="padding:0 4px"></td>`;
-    const actMain=`<td onclick="event.stopPropagation()"><button class="btn btn-ghost btn-xs" onclick="startEdit('${t}','${esc(r.id)}',event)">✏ Edit</button><button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openQuot('${t}','${esc(r.id)}')">Open →</button></td>`;
+    const act=`<td onclick="event.stopPropagation()"><button class="btn btn-ghost btn-xs" onclick="startEdit('${t}','${esc(r.id)}',event)">✏ Edit</button><button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openQuot('${t}','${esc(r.id)}')">Open →</button></td>`;
 
     if(t==='SE'){
-      if(isEd)return`<tr class="row-editing">${cb}${tickBtn}<td><span class="mono">${r.id}</span></td><td>${ieTxt('session',r.session,'70px')}</td><td>${ieTxt('seQtnNo',r.seQtnNo,'100px')}</td><td>${ieIn('seQtnDate',r.seQtnDate,'date','105px')}</td><td>${ieTxt('customerName',r.customerName,'120px')}</td><td>${ieTxt('customerRefNo',r.customerRefNo,'90px')}</td><td>${ieTxt('kindAttention',r.kindAttention,'100px')}</td><td>${ieIn('enquiryDate',r.enquiryDate,'date','105px')}</td><td>${ieIn('enquiryDueDate',r.enquiryDueDate,'date','105px')}</td><td>${ieTxt('oemName',r.oemName,'90px')}</td><td>${ieTxt('makes',r.makes,'90px')}</td><td>${ieTxt('itemDescription',r.itemDescription,'150px')}</td><td>${ieTxt('orfNo',r.orfNo,'80px')}</td><td>${ieTxt('sePoNo',r.sePoNo,'80px')}</td><td>${ieTxt('seFileNo',r.seFileNo,'80px')}</td><td>${ieTxt('remarks',r.remarks,'120px')}</td><td>${ieSel('status',r.status,['Pending','Accepted','Rejected'])}</td><td>${pl}</td>${actEdit}</tr>`;
-      return`<tr class="${isSel?'sel':''}" style="cursor:pointer" onclick="openQuot('${t}','${esc(r.id)}')">${cb}${tickBtn}<td><span class="id-link">${r.id}</span></td><td>${d(r.session)}</td><td class="mono">${r.seQtnNo||'<span class="dash">—</span>'}</td><td>${d(r.seQtnDate)}</td><td>${dc(r.customerName)}</td><td>${d(r.customerRefNo)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.enquiryDate)}</td><td>${d(r.enquiryDueDate)}</td><td>${dc(r.oemName)}</td><td>${dc(r.makes)}</td><td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.itemDescription)}</td><td>${d(r.orfNo)}</td><td>${d(r.sePoNo)}</td><td>${d(r.seFileNo)}</td><td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.remarks)}</td><td>${sb(r.status)}</td><td>${pl}</td>${actMain}</tr>`;
+      if(isEd)return`<tr class="row-editing">${cb}${tick}<td><span class="mono">${r.id}</span></td><td>${ieTxt('session',r.session,'70px')}</td><td>${ieTxt('seQtnNo',r.seQtnNo,'100px')}</td><td>${ieIn('seQtnDate',r.seQtnDate,'date','105px')}</td><td>${ieTxt('customerName',r.customerName,'120px')}</td><td>${ieTxt('customerRefNo',r.customerRefNo,'90px')}</td><td>${ieTxt('kindAttention',r.kindAttention,'100px')}</td><td>${ieIn('enquiryDate',r.enquiryDate,'date','105px')}</td><td>${ieIn('enquiryDueDate',r.enquiryDueDate,'date','105px')}</td><td>${ieTxt('oemName',r.oemName,'90px')}</td><td>${ieTxt('makes',r.makes,'90px')}</td><td>${ieTxt('itemDescription',r.itemDescription,'150px')}</td><td>${ieTxt('orfNo',r.orfNo,'80px')}</td><td>${ieTxt('sePoNo',r.sePoNo,'80px')}</td><td>${ieTxt('seFileNo',r.seFileNo,'80px')}</td><td>${ieTxt('remarks',r.remarks,'120px')}</td><td>${ieSel('status',r.status,['Pending','Accepted','Rejected'])}</td><td>${pl}</td>${actEdit}</tr>`;
+      return`<tr class="${isSel?'sel':''}" style="cursor:pointer" onclick="openQuot('${t}','${esc(r.id)}')">${cb}${tick}<td><span class="id-link">${r.id}</span></td><td>${d(r.session)}</td><td class="mono">${r.seQtnNo||'<span class="dash">—</span>'}</td><td>${d(r.seQtnDate)}</td><td>${dc(r.customerName)}</td><td>${d(r.customerRefNo)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.enquiryDate)}</td><td>${d(r.enquiryDueDate)}</td><td>${dc(r.oemName)}</td><td>${dc(r.makes)}</td><td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.itemDescription)}</td><td>${d(r.orfNo)}</td><td>${d(r.sePoNo)}</td><td>${d(r.seFileNo)}</td><td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.remarks)}</td><td>${sb(r.status)}</td><td>${pl}</td>${act}</tr>`;
     }
     if(t==='SRE'){
-      if(isEd)return`<tr class="row-editing">${cb}${tickBtn}<td><span class="mono">${r.id}</span></td><td>${ieTxt('session',r.session,'70px')}</td><td>${ieTxt('serviceQtnNo',r.serviceQtnNo,'100px')}</td><td>${ieIn('serviceQtnDate',r.serviceQtnDate,'date','105px')}</td><td>${ieTxt('customerName',r.customerName,'120px')}</td><td>${ieTxt('customerRefNo',r.customerRefNo,'90px')}</td><td>${ieTxt('kindAttention',r.kindAttention,'100px')}</td><td>${ieIn('enquiryDate',r.enquiryDate,'date','105px')}</td><td>${ieTxt('itemDescription',r.itemDescription,'150px')}</td><td>${ieTxt('qtyMandays',r.qtyMandays,'80px')}</td><td>${ieTxt('uom',r.uom,'70px')}</td><td>${ieIn('totalPrice',r.totalPrice,'number','80px')}</td><td>${ieTxt('poNo',r.poNo,'80px')}</td><td>${ieTxt('remarks',r.remarks,'120px')}</td><td>${ieSel('status',r.status,['Pending','Accepted','Rejected'])}</td><td>${pl}</td>${actEdit}</tr>`;
-      return`<tr class="${isSel?'sel':''}" style="cursor:pointer" onclick="openQuot('${t}','${esc(r.id)}')">${cb}${tickBtn}<td><span class="id-link">${r.id}</span></td><td>${d(r.session)}</td><td>${d(r.serviceQtnNo)}</td><td>${d(r.serviceQtnDate)}</td><td>${dc(r.customerName)}</td><td>${d(r.customerRefNo)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.enquiryDate)}</td><td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.itemDescription)}</td><td>${dc(r.qtyMandays)}</td><td>${dc(r.uom)}</td><td class="mono">${r.totalPrice?'₹'+fmt(r.totalPrice):'<span class="dash">—</span>'}</td><td>${d(r.poNo)}</td><td style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.remarks)}</td><td>${sb(r.status)}</td><td>${pl}</td>${actMain}</tr>`;
+      if(isEd)return`<tr class="row-editing">${cb}${tick}<td><span class="mono">${r.id}</span></td><td>${ieTxt('session',r.session,'70px')}</td><td>${ieTxt('serviceQtnNo',r.serviceQtnNo,'100px')}</td><td>${ieIn('serviceQtnDate',r.serviceQtnDate,'date','105px')}</td><td>${ieTxt('customerName',r.customerName,'120px')}</td><td>${ieTxt('customerRefNo',r.customerRefNo,'90px')}</td><td>${ieTxt('kindAttention',r.kindAttention,'100px')}</td><td>${ieIn('enquiryDate',r.enquiryDate,'date','105px')}</td><td>${ieTxt('itemDescription',r.itemDescription,'150px')}</td><td>${ieTxt('qtyMandays',r.qtyMandays,'80px')}</td><td>${ieTxt('uom',r.uom,'70px')}</td><td>${ieIn('totalPrice',r.totalPrice,'number','80px')}</td><td>${ieTxt('poNo',r.poNo,'80px')}</td><td>${ieTxt('remarks',r.remarks,'120px')}</td><td>${ieSel('status',r.status,['Pending','Accepted','Rejected'])}</td><td>${pl}</td>${actEdit}</tr>`;
+      return`<tr class="${isSel?'sel':''}" style="cursor:pointer" onclick="openQuot('${t}','${esc(r.id)}')">${cb}${tick}<td><span class="id-link">${r.id}</span></td><td>${d(r.session)}</td><td>${d(r.serviceQtnNo)}</td><td>${d(r.serviceQtnDate)}</td><td>${dc(r.customerName)}</td><td>${d(r.customerRefNo)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.enquiryDate)}</td><td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.itemDescription)}</td><td>${dc(r.qtyMandays)}</td><td>${dc(r.uom)}</td><td class="mono">${r.totalPrice?'₹'+fmt(r.totalPrice):'<span class="dash">—</span>'}</td><td>${d(r.poNo)}</td><td style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.remarks)}</td><td>${sb(r.status)}</td><td>${pl}</td>${act}</tr>`;
     }
     if(t==='BO'){
-      if(isEd)return`<tr class="row-editing">${cb}${tickBtn}<td><span class="mono">${r.id}</span></td><td>${ieTxt('shreeBudgetaryNo',r.shreeBudgetaryNo,'100px')}</td><td>${ieTxt('session',r.session,'70px')}</td><td>${ieTxt('makes',r.makes,'90px')}</td><td>${ieIn('shreeBoDate',r.shreeBoDate,'date','105px')}</td><td>${ieTxt('customerName',r.customerName,'120px')}</td><td>${ieTxt('kindAttention',r.kindAttention,'100px')}</td><td>${ieIn('boEnquiryDate',r.boEnquiryDate,'date','105px')}</td><td>${ieTxt('itemDescription',r.itemDescription,'150px')}</td><td>${ieTxt('qty',r.qty,'60px')}</td><td>${ieTxt('uom',r.uom,'60px')}</td><td>${ieIn('totalPrice',r.totalPrice,'number','80px')}</td><td>${ieTxt('remark',r.remark,'120px')}</td><td>${ieSel('status',r.status,['Pending','Accepted','Rejected'])}</td><td>${pl}</td>${actEdit}</tr>`;
-      return`<tr class="${isSel?'sel':''}" style="cursor:pointer" onclick="openQuot('${t}','${esc(r.id)}')">${cb}${tickBtn}<td><span class="id-link">${r.id}</span></td><td>${d(r.shreeBudgetaryNo)}</td><td>${d(r.session)}</td><td>${dc(r.makes)}</td><td>${d(r.shreeBoDate)}</td><td>${dc(r.customerName)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.boEnquiryDate)}</td><td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.itemDescription)}</td><td>${dc(r.qty)}</td><td>${dc(r.uom)}</td><td class="mono">${r.totalPrice?'₹'+fmt(r.totalPrice):'<span class="dash">—</span>'}</td><td style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.remark)}</td><td>${sb(r.status)}</td><td>${pl}</td>${actMain}</tr>`;
-    }
+  if(isEd)return`<tr class="row-editing">${cb}${tick}<td><span class="mono">${r.id}</span></td><td>${ieTxt('session',r.session,'70px')}</td><td>${ieTxt('shreeBudgetaryNo',r.shreeBudgetaryNo,'100px')}</td><td>${ieTxt('makes',r.makes,'90px')}</td><td>${ieIn('shreeBoDate',r.shreeBoDate,'date','105px')}</td><td>${ieTxt('customerName',r.customerName,'120px')}</td><td>${ieTxt('kindAttention',r.kindAttention,'100px')}</td><td>${ieIn('boEnquiryDate',r.boEnquiryDate,'date','105px')}</td><td>${ieTxt('itemDescription',r.itemDescription,'150px')}</td><td>${ieTxt('qty',r.qty,'60px')}</td><td>${ieTxt('uom',r.uom,'60px')}</td><td>${ieIn('totalPrice',r.totalPrice,'number','80px')}</td><td>${ieTxt('remark',r.remark,'120px')}</td><td>${ieSel('status',r.status,['Pending','Accepted','Rejected'])}</td><td>${pl}</td>${actEdit}</tr>`;
+
+  return`<tr class="${isSel?'sel':''}" style="cursor:pointer" onclick="openQuot('${t}','${esc(r.id)}')">${cb}${tick}<td><span class="id-link">${r.id}</span></td><td>${d(r.session)}</td><td>${d(r.shreeBudgetaryNo)}</td><td>${dc(r.makes)}</td><td>${d(r.shreeBoDate)}</td><td>${dc(r.customerName)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.boEnquiryDate)}</td><td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.itemDescription)}</td><td>${dc(r.qty)}</td><td>${dc(r.uom)}</td><td class="mono">${r.totalPrice?'₹'+fmt(r.totalPrice):'<span class="dash">—</span>'}</td><td style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.remark)}</td><td>${sb(r.status)}</td><td>${pl}</td>${act}</tr>`;
+}
     if(t==='AQ'){
-      if(isEd)return`<tr class="row-editing">${cb}${tickBtn}<td><span class="mono">${r.id}</span></td><td>${ieTxt('session',r.session,'70px')}</td><td>${ieTxt('teQtnNo',r.teQtnNo,'100px')}</td><td>${ieIn('teQtnDate',r.teQtnDate,'date','105px')}</td><td>${ieTxt('customerName',r.customerName,'120px')}</td><td>${ieTxt('customerRefNo',r.customerRefNo,'90px')}</td><td>${ieTxt('kindAttention',r.kindAttention,'100px')}</td><td>${ieIn('enquiryDate',r.enquiryDate,'date','105px')}</td><td>${ieIn('enquiryDueDate',r.enquiryDueDate,'date','105px')}</td><td>${ieTxt('oemName',r.oemName,'90px')}</td><td>${ieTxt('makes',r.makes,'90px')}</td><td>${ieTxt('itemDescription',r.itemDescription,'150px')}</td><td>${ieTxt('tePORef',r.tePORef,'80px')}</td><td>${ieTxt('ourFileNo',r.ourFileNo,'80px')}</td><td>${ieTxt('orfNo',r.orfNo,'80px')}</td><td>${ieTxt('remarks',r.remarks,'120px')}</td><td>${ieSel('status',r.status,['Pending','Accepted','Rejected'])}</td><td>${pl}</td>${actEdit}</tr>`;
-      return`<tr class="${isSel?'sel':''}" style="cursor:pointer" onclick="openQuot('${t}','${esc(r.id)}')">${cb}${tickBtn}<td><span class="id-link">${r.id}</span></td><td>${d(r.session)}</td><td>${d(r.teQtnNo)}</td><td>${d(r.teQtnDate)}</td><td>${dc(r.customerName)}</td><td>${d(r.customerRefNo)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.enquiryDate)}</td><td>${d(r.enquiryDueDate)}</td><td>${dc(r.oemName)}</td><td>${dc(r.makes)}</td><td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.itemDescription)}</td><td>${d(r.tePORef)}</td><td>${d(r.ourFileNo)}</td><td>${d(r.orfNo)}</td><td style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.remarks)}</td><td>${sb(r.status)}</td><td>${pl}</td>${actMain}</tr>`;
+      if(isEd)return`<tr class="row-editing">${cb}${tick}<td><span class="mono">${r.id}</span></td><td>${ieTxt('session',r.session,'70px')}</td><td>${ieTxt('teQtnNo',r.teQtnNo,'100px')}</td><td>${ieIn('teQtnDate',r.teQtnDate,'date','105px')}</td><td>${ieTxt('customerName',r.customerName,'120px')}</td><td>${ieTxt('customerRefNo',r.customerRefNo,'90px')}</td><td>${ieTxt('kindAttention',r.kindAttention,'100px')}</td><td>${ieIn('enquiryDate',r.enquiryDate,'date','105px')}</td><td>${ieIn('enquiryDueDate',r.enquiryDueDate,'date','105px')}</td><td>${ieTxt('oemName',r.oemName,'90px')}</td><td>${ieTxt('makes',r.makes,'90px')}</td><td>${ieTxt('itemDescription',r.itemDescription,'150px')}</td><td>${ieTxt('tePORef',r.tePORef,'80px')}</td><td>${ieTxt('ourFileNo',r.ourFileNo,'80px')}</td><td>${ieTxt('orfNo',r.orfNo,'80px')}</td><td>${ieTxt('remarks',r.remarks,'120px')}</td><td>${ieSel('status',r.status,['Pending','Accepted','Rejected'])}</td><td>${pl}</td>${actEdit}</tr>`;
+      return`<tr class="${isSel?'sel':''}" style="cursor:pointer" onclick="openQuot('${t}','${esc(r.id)}')">${cb}${tick}<td><span class="id-link">${r.id}</span></td><td>${d(r.session)}</td><td>${d(r.teQtnNo)}</td><td>${d(r.teQtnDate)}</td><td>${dc(r.customerName)}</td><td>${d(r.customerRefNo)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.enquiryDate)}</td><td>${d(r.enquiryDueDate)}</td><td>${dc(r.oemName)}</td><td>${dc(r.makes)}</td><td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.itemDescription)}</td><td>${d(r.tePORef)}</td><td>${d(r.ourFileNo)}</td><td>${d(r.orfNo)}</td><td style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.remarks)}</td><td>${sb(r.status)}</td><td>${pl}</td>${act}</tr>`;
     }
   }
 
   if(t==='PO'){
-    const n=DB.POI.filter(p=>p.poId===r.id).length;
-    const pis=DB.POI.filter(p=>p.poId===r.id);
-    const ord=pis.reduce((s,p)=>s+(+p.orderedQty||0),0);
-    const pct=ord?Math.round(pis.reduce((s,p)=>s+oemRcvd(p.id),0)/ord*100):0;
-    const actPO=`<td onclick="event.stopPropagation()"><button class="btn btn-ghost btn-xs" onclick="startEdit('PO','${r.id}',event)">✏ Edit</button><button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openPO('${r.id}')">Open →</button></td>`;
+    const act=`<td onclick="event.stopPropagation()"><button class="btn btn-ghost btn-xs" onclick="startEdit('PO','${r.id}',event)">✏ Edit</button><button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openPO('${r.id}')">Open →</button></td>`;
     if(isEd)return`<tr class="row-editing"><td><input type="checkbox" class="cb"/></td>
       <td><span class="id-link">${r.id}</span></td>
       <td><span class="id-link" onclick="event.stopPropagation();openQuot('${r.quotType}','${esc(r.quotId)}')">${r.quotId}</span></td>
@@ -753,8 +891,6 @@ function tRow(t,r){
       <td>${ieTxt('nmDCSPNum',r.nmDCSPNum,'90px')}</td>
       <td>${ieTxt('remarks',r.remarks,'120px')}</td>
       <td>${ieSel('status',r.status,['Open','Close'])}</td>
-      <td class="mono">${n}</td>
-      <td>${ord?prg(pct):'—'}</td>
       ${actEdit}</tr>`;
     return`<tr class="${isSel?'sel':''}" style="cursor:pointer" onclick="openPO('${r.id}')">
       <td onclick="event.stopPropagation()"><input type="checkbox" class="cb" ${isSel?'checked':''} onchange="toggleSelectRow('${esc(r.id)}',this.checked)"/></td>
@@ -764,26 +900,23 @@ function tRow(t,r){
       <td>${d(r.session)}</td><td>${d(r.sePONum)}</td><td>${d(r.seFileNum)}</td><td>${d(r.sePOEntryDate)}</td>
       <td>${dc(r.customerName)}</td><td>${d(r.customerTenderRef)}</td><td>${d(r.customerPONum)}</td>
       <td>${d(r.customerPODate)}</td><td>${d(r.customerDueDate)}</td>
-      <td class="mono">${r.poValue?'₹'+fmt(r.poValue):'<span class="dash">—</span>'}</td>
+      <td class="mono">${mval(r.poValue)}</td>
       <td>${d(r.gemPONum)}</td><td>${d(r.gemPODate)}</td><td>${dc(r.make)}</td>
       <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.itemDescription)}</td>
       <td>${d(r.oemPONo)}</td><td>${d(r.oemPODate)}</td><td>${d(r.oemSONum)}</td>
       <td><span class="badge ${r.gemAMCPayment==='Yes'?'b-ok':'b-gray'}">${r.gemAMCPayment||'No'}</span></td>
-      <td class="mono">${r.gemAMCPaymentAmount?'₹'+fmt(r.gemAMCPaymentAmount):'<span class="dash">—</span>'}</td>
+      <td class="mono">${mval(r.gemAMCPaymentAmount)}</td>
       <td>${d(r.nmDCSPNum)}</td>
       <td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(r.remarks)}</td>
       <td>${sb(r.status)}</td>
-      <td class="mono">${n} item${n!==1?'s':''}</td>
-      <td>${ord?prg(pct):'<span class="dash">—</span>'}</td>
-      ${actPO}</tr>`;
+      ${act}</tr>`;
   }
 
   if(t==='POI'){
     const rcvd=poiQtyRcvd(r),pendOEM=poiQtyPendOEM(r),suppCust=poiQtySupplCust(r),pendCust=poiQtyPendCust(r);
-    const actPOI=`<td onclick="event.stopPropagation()"><button class="btn btn-ghost btn-xs" onclick="startEdit('POI','${r.id}',event)">✏ Edit</button><button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openPOI('${r.id}')">Open →</button></td>`;
+    const act=`<td onclick="event.stopPropagation()"><button class="btn btn-ghost btn-xs" onclick="startEdit('POI','${r.id}',event)">✏ Edit</button><button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openPOI('${r.id}')">Open →</button></td>`;
     if(isEd)return`<tr class="row-editing"><td><input type="checkbox" class="cb"/></td>
-      <td><span class="id-link">${r.id}</span></td>
-      <td>${ieTxt('poId',r.poId,'80px')}</td>
+      <td><span class="id-link">${r.id}</span></td><td>${ieTxt('poId',r.poId,'80px')}</td>
       <td><span class="tag">${r.quotId||'—'}</span></td>
       <td>${ieIn('itemName',r.itemName,'text','110px')}</td>
       <td>${ieTxt('itemDescription',r.itemDescription,'130px')}</td>
@@ -810,97 +943,84 @@ function tRow(t,r){
       <td>${d(r.sePONo)}</td><td>${d(r.seFileNo)}</td>
       <td class="mono">${rcvd}</td><td class="mono">${pendOEM}</td>
       <td class="mono">${suppCust}</td><td class="mono">${pendCust}</td>
-      <td>${sb(poiSt(r))}</td>${actPOI}</tr>`;
+      <td>${sb(poiSt(r))}</td>${act}</tr>`;
   }
 
   if(t==='OEM'){
-    const actO=`<td onclick="event.stopPropagation()"><button class="btn btn-ghost btn-xs" onclick="startEdit('OEM','${r.id}',event)">✏ Edit</button></td>`;
+    const act=`<td onclick="event.stopPropagation()"><button class="btn btn-ghost btn-xs" onclick="startEdit('OEM','${r.id}',event)">✏ Edit</button></td>`;
     if(isEd)return`<tr class="row-editing"><td><input type="checkbox" class="cb"/></td><td class="mono">${r.id}</td><td><span class="id-link" onclick="event.stopPropagation();openPOI('${r.poiId}')">${r.poiId}</span></td><td><span class="id-link" onclick="event.stopPropagation();openPO('${r.poId}')">${r.poId}</span></td><td>${d(r.quotId)}</td><td>${ieTxt('supplier',r.supplier,'110px')}</td><td>${ieIn('itemName',r.itemName,'text','100px')}</td><td>${ieIn('date',r.date,'date','105px')}</td><td>${ieIn('qtyReceived',r.qtyReceived,'number','65px')}</td><td>${ieIn('remarks',r.remarks,'text','120px')}</td>${actEdit}</tr>`;
-    return`<tr class="${isSel?'sel':''}"><td onclick="event.stopPropagation()"><input type="checkbox" class="cb" ${isSel?'checked':''} onchange="toggleSelectRow('${esc(r.id)}',this.checked)"/></td><td class="mono">${r.id}</td><td><span class="id-link" onclick="openPOI('${r.poiId}')">${r.poiId}</span></td><td><span class="id-link" onclick="openPO('${r.poId}')">${r.poId}</span></td><td>${d(r.quotId)}</td><td>${dc(r.supplier)}</td><td>${dc(r.itemName)}</td><td>${d(r.date)}</td><td class="mono">${r.qtyReceived}</td><td>${dc(r.remarks)}</td>${actO}</tr>`;
+    return`<tr class="${isSel?'sel':''}"><td onclick="event.stopPropagation()"><input type="checkbox" class="cb" ${isSel?'checked':''} onchange="toggleSelectRow('${esc(r.id)}',this.checked)"/></td><td class="mono">${r.id}</td><td><span class="id-link" onclick="openPOI('${r.poiId}')">${r.poiId}</span></td><td><span class="id-link" onclick="openPO('${r.poId}')">${r.poId}</span></td><td>${d(r.quotId)}</td><td>${dc(r.supplier)}</td><td>${dc(r.itemName)}</td><td>${d(r.date)}</td><td class="mono">${r.qtyReceived}</td><td>${dc(r.remarks)}</td>${act}</tr>`;
   }
   if(t==='CS'){
-    const actC=`<td onclick="event.stopPropagation()"><button class="btn btn-ghost btn-xs" onclick="startEdit('CS','${r.id}',event)">✏ Edit</button></td>`;
+    const act=`<td onclick="event.stopPropagation()"><button class="btn btn-ghost btn-xs" onclick="startEdit('CS','${r.id}',event)">✏ Edit</button></td>`;
     if(isEd)return`<tr class="row-editing"><td><input type="checkbox" class="cb"/></td><td class="mono">${r.id}</td><td><span class="id-link" onclick="event.stopPropagation();openPOI('${r.poiId}')">${r.poiId}</span></td><td><span class="id-link" onclick="event.stopPropagation();openPO('${r.poId}')">${r.poId}</span></td><td>${d(r.quotId)}</td><td><span class="tag">${r.oemId||'—'}</span></td><td>${ieTxt('customer',r.customer,'110px')}</td><td>${ieIn('itemName',r.itemName,'text','100px')}</td><td>${ieIn('date',r.date,'date','105px')}</td><td>${ieIn('qtySupplied',r.qtySupplied,'number','65px')}</td><td>${ieIn('remarks',r.remarks,'text','120px')}</td>${actEdit}</tr>`;
-    return`<tr class="${isSel?'sel':''}"><td onclick="event.stopPropagation()"><input type="checkbox" class="cb" ${isSel?'checked':''} onchange="toggleSelectRow('${esc(r.id)}',this.checked)"/></td><td class="mono">${r.id}</td><td><span class="id-link" onclick="openPOI('${r.poiId}')">${r.poiId}</span></td><td><span class="id-link" onclick="openPO('${r.poId}')">${r.poId}</span></td><td>${d(r.quotId)}</td><td><span class="tag">${r.oemId||'—'}</span></td><td>${dc(r.customer)}</td><td>${dc(r.itemName)}</td><td>${d(r.date)}</td><td class="mono">${r.qtySupplied}</td><td>${dc(r.remarks)}</td>${actC}</tr>`;
+    return`<tr class="${isSel?'sel':''}"><td onclick="event.stopPropagation()"><input type="checkbox" class="cb" ${isSel?'checked':''} onchange="toggleSelectRow('${esc(r.id)}',this.checked)"/></td><td class="mono">${r.id}</td><td><span class="id-link" onclick="openPOI('${r.poiId}')">${r.poiId}</span></td><td><span class="id-link" onclick="openPO('${r.poId}')">${r.poId}</span></td><td>${d(r.quotId)}</td><td><span class="tag">${r.oemId||'—'}</span></td><td>${dc(r.customer)}</td><td>${dc(r.itemName)}</td><td>${d(r.date)}</td><td class="mono">${r.qtySupplied}</td><td>${dc(r.remarks)}</td>${act}</tr>`;
   }
   return'';
 }
 
 // ── TOPBAR BUILDER ─────────────────────────────────────────────────────────
-function topBarHTML(crumbItems,actions,pipe){
-  const crumbs=crumbItems.map((c,i)=>i<crumbItems.length-1?`<span class="cl" onclick="${c.click}">${c.label}</span><span class="sep">›</span>`:`<span class="cc">${c.label}</span>`).join('');
-  return`<div class="topbar"><div class="tb-l"><button class="btn btn-ghost btn-sm" onclick="goBack()">← Back</button><div class="crumb">${crumbs}</div></div><div class="tb-r">${actions}</div></div>${pipe||''}`;
+function topBarHTML(crumbItems,actions){
+  const crumbs=crumbItems.map((c,i)=>i<crumbItems.length-1
+    ?`<span class="cl" onclick="${c.click}">${c.label}</span><span class="sep">›</span>`
+    :`<span class="cc">${c.label}</span>`).join('');
+  return`<div class="topbar"><div class="tb-l"><button class="btn btn-ghost btn-sm" onclick="goBack()">← Back</button><div class="crumb">${crumbs}</div></div><div class="tb-r">${actions}</div></div>`;
 }
 
-// ── QUOTATION DETAIL PAGE ──────────────────────────────────────────────────
+// ── QUOTATION DETAIL ───────────────────────────────────────────────────────
 function rQuot(){
   const r=curRec,t=curType;
   const allPOs=DB.PO.filter(p=>p.quotId===r.id);
   const canPO=r.status==='Accepted';
-  const pipe=pipelineBar(r.id,t,null,null);
 
   let h=topBarHTML(
     [{label:LABELS[t],click:`switchTab('${t}')`},{label:r.id,click:''}],
     (canPO?`<button class="btn btn-add btn-sm" onclick="openForm('PO','${esc(r.id)}','${t}')">+ Create PO</button>`:`<span class="btn btn-sm btn-off">+ Create PO</span>`)+
-    `<button class="btn btn-sm" onclick="openEditForm('${t}','${esc(r.id)}')">Edit</button>`,
-    pipe
+    `<button class="btn btn-sm" onclick="openEditForm('${t}','${esc(r.id)}')">Edit</button>`
   );
 
   h+=`<div style="padding:14px 18px 0"><div class="section">
     <div class="sec-hdr">
       <span class="sec-title">${LABELS[t]} <span class="tag" style="margin-left:4px">${r.id}</span></span>
       <div style="display:flex;align-items:center;gap:6px">
-        ${r.status!=='Accepted'?`<button class="accept-tick" title="Quick accept" onclick="quickAccept('${t}','${esc(r.id)}',event)">&#10003;</button>`:''}
-        <button class="btn btn-ghost btn-xs" onclick="openEditForm('${t}','${esc(r.id)}')">&#9998; Edit</button>
+        ${r.status!=='Accepted'?`<button class="accept-tick" title="Quick accept" onclick="quickAccept('${t}','${esc(r.id)}',event)">✓</button>`:''}
+        <button class="btn btn-ghost btn-xs" onclick="openEditForm('${t}','${esc(r.id)}')">✏ Edit</button>
       </div>
     </div>`;
 
   if(t==='SE'){
-    h+=`<div class="t-wrap"><table><thead><tr><th>Session</th><th>SE QTN No.</th><th>SE QTN Date</th><th>Customer</th><th>Cust. Ref No.</th><th>Kind Attention</th><th>Enquiry Date</th><th>Enquiry Due</th><th>OEM</th><th>Makes</th><th>ORF No.</th><th>SE PO No.</th><th>SE File No.</th><th>Status</th></tr></thead>
+    h+=`<div class="t-wrap"><table><thead><tr><th>Session</th><th>SE QTN No.</th><th>SE QTN Date</th><th>Customer</th><th>Cust. Ref No.</th><th>Kind Attention</th><th>Enquiry Date</th><th>Enquiry Due</th><th>OEM</th><th>Makes</th><th>Item Description</th><th>ORF No.</th><th>SE PO No.</th><th>SE File No.</th><th>Remarks</th><th>Status</th></tr></thead>
     <tbody><tr>
-      <td>${d(r.session)}</td><td>${d(r.seQtnNo)}</td><td>${d(r.seQtnDate)}</td><td>${dc(r.customerName)}</td><td>${d(r.customerRefNo)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.enquiryDate)}</td><td>${d(r.enquiryDueDate)}</td><td>${dc(r.oemName)}</td><td>${dc(r.makes)}</td><td>${d(r.orfNo)}</td><td>${d(r.sePoNo)}</td><td>${d(r.seFileNo)}</td><td>${sb(r.status)}</td>
-    </tr></tbody></table></div>
-    ${r.itemDescription?`<div style="padding:8px 12px;background:var(--surface2);border-top:1px solid var(--border);font-size:13px"><strong>Item Description:</strong> ${r.itemDescription}</div>`:''}
-    ${r.remarks?`<div style="padding:6px 12px;background:var(--surface2);border-top:1px solid var(--border);font-size:13px"><strong>Remarks:</strong> ${r.remarks}</div>`:''}`;
+      <td>${d(r.session)}</td><td>${d(r.seQtnNo)}</td><td>${d(r.seQtnDate)}</td><td>${dc(r.customerName)}</td><td>${d(r.customerRefNo)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.enquiryDate)}</td><td>${d(r.enquiryDueDate)}</td><td>${dc(r.oemName)}</td><td>${dc(r.makes)}</td><td>${dc(r.itemDescription)}</td><td>${d(r.orfNo)}</td><td>${d(r.sePoNo)}</td><td>${d(r.seFileNo)}</td><td>${dc(r.remarks)}</td><td>${sb(r.status)}</td>
+    </tr></tbody></table></div>`;
   }else if(t==='SRE'){
-    h+=`<div class="t-wrap"><table><thead><tr><th>Session</th><th>Service QTN No.</th><th>Date</th><th>Customer</th><th>Cust. Ref No.</th><th>Kind Attention</th><th>Enquiry Date</th><th>Qty/Mandays</th><th>UOM</th><th>Total Price</th><th>PO No.</th><th>Status</th></tr></thead>
+    h+=`<div class="t-wrap"><table><thead><tr><th>Session</th><th>Service QTN No.</th><th>Date</th><th>Customer</th><th>Cust. Ref No.</th><th>Kind Attention</th><th>Enquiry Date</th><th>Item Description</th><th>Qty/Mandays</th><th>UOM</th><th>Total Price</th><th>PO No.</th><th>Remarks</th><th>Status</th></tr></thead>
     <tbody><tr>
-      <td>${d(r.session)}</td><td>${d(r.serviceQtnNo)}</td><td>${d(r.serviceQtnDate)}</td><td>${dc(r.customerName)}</td><td>${d(r.customerRefNo)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.enquiryDate)}</td><td>${dc(r.qtyMandays)}</td><td>${dc(r.uom)}</td><td class="mono">${r.totalPrice?'₹'+fmt(r.totalPrice):'—'}</td><td>${d(r.poNo)}</td><td>${sb(r.status)}</td>
-    </tr></tbody></table></div>
-    ${r.itemDescription?`<div style="padding:8px 12px;background:var(--surface2);border-top:1px solid var(--border);font-size:13px"><strong>Item Description:</strong> ${r.itemDescription}</div>`:''}
-    ${r.remarks?`<div style="padding:6px 12px;background:var(--surface2);border-top:1px solid var(--border);font-size:13px"><strong>Remarks:</strong> ${r.remarks}</div>`:''}`;
+      <td>${d(r.session)}</td><td>${d(r.serviceQtnNo)}</td><td>${d(r.serviceQtnDate)}</td><td>${dc(r.customerName)}</td><td>${d(r.customerRefNo)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.enquiryDate)}</td><td>${dc(r.itemDescription)}</td><td>${dc(r.qtyMandays)}</td><td>${dc(r.uom)}</td><td class="mono">${r.totalPrice?'₹'+fmt(r.totalPrice):'—'}</td><td>${d(r.poNo)}</td><td>${dc(r.remarks)}</td><td>${sb(r.status)}</td>
+    </tr></tbody></table></div>`;
   }else if(t==='BO'){
-    h+=`<div class="t-wrap"><table><thead><tr><th>Budgetary No.</th><th>Session</th><th>Makes</th><th>Date</th><th>Customer</th><th>Kind Attention</th><th>Enquiry Date</th><th>Qty</th><th>UOM</th><th>Total Price</th><th>Status</th></tr></thead>
+    h+=`<div class="t-wrap"><table><thead><tr><th>Budgetary No.</th><th>Session</th><th>Makes</th><th>Date</th><th>Customer</th><th>Kind Attention</th><th>Enquiry Date</th><th>Item Description</th><th>Qty</th><th>UOM</th><th>Total Price</th><th>Remark</th><th>Status</th></tr></thead>
     <tbody><tr>
-      <td>${d(r.shreeBudgetaryNo)}</td><td>${d(r.session)}</td><td>${dc(r.makes)}</td><td>${d(r.shreeBoDate)}</td><td>${dc(r.customerName)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.boEnquiryDate)}</td><td>${dc(r.qty)}</td><td>${dc(r.uom)}</td><td class="mono">${r.totalPrice?'₹'+fmt(r.totalPrice):'—'}</td><td>${sb(r.status)}</td>
-    </tr></tbody></table></div>
-    ${r.itemDescription?`<div style="padding:8px 12px;background:var(--surface2);border-top:1px solid var(--border);font-size:13px"><strong>Item Description:</strong> ${r.itemDescription}</div>`:''}
-    ${r.remark?`<div style="padding:6px 12px;background:var(--surface2);border-top:1px solid var(--border);font-size:13px"><strong>Remark:</strong> ${r.remark}</div>`:''}`;
+      <td>${d(r.shreeBudgetaryNo)}</td><td>${d(r.session)}</td><td>${dc(r.makes)}</td><td>${d(r.shreeBoDate)}</td><td>${dc(r.customerName)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.boEnquiryDate)}</td><td>${dc(r.itemDescription)}</td><td>${dc(r.qty)}</td><td>${dc(r.uom)}</td><td class="mono">${r.totalPrice?'₹'+fmt(r.totalPrice):'—'}</td><td>${dc(r.remark)}</td><td>${sb(r.status)}</td>
+    </tr></tbody></table></div>`;
   }else if(t==='AQ'){
-    h+=`<div class="t-wrap"><table><thead><tr><th>Session</th><th>TE QTN No.</th><th>TE QTN Date</th><th>Customer</th><th>Cust. Ref No.</th><th>Kind Attention</th><th>Enquiry Date</th><th>Enquiry Due</th><th>OEM</th><th>Makes</th><th>TE PO Ref</th><th>Our File No.</th><th>ORF No.</th><th>Status</th></tr></thead>
+    h+=`<div class="t-wrap"><table><thead><tr><th>Session</th><th>TE QTN No.</th><th>TE QTN Date</th><th>Customer</th><th>Cust. Ref No.</th><th>Kind Attention</th><th>Enquiry Date</th><th>Enquiry Due</th><th>OEM</th><th>Makes</th><th>Item Description</th><th>TE PO Ref</th><th>Our File No.</th><th>ORF No.</th><th>Remarks</th><th>Status</th></tr></thead>
     <tbody><tr>
-      <td>${d(r.session)}</td><td>${d(r.teQtnNo)}</td><td>${d(r.teQtnDate)}</td><td>${dc(r.customerName)}</td><td>${d(r.customerRefNo)}</td><td>${d(r.customerRefNo)}</td><td>${d(r.enquiryDate)}</td><td>${d(r.enquiryDueDate)}</td><td>${dc(r.oemName)}</td><td>${dc(r.makes)}</td><td>${d(r.tePORef)}</td><td>${d(r.ourFileNo)}</td><td>${d(r.orfNo)}</td><td>${sb(r.status)}</td>
-    </tr></tbody></table></div>
-    ${r.itemDescription?`<div style="padding:8px 12px;background:var(--surface2);border-top:1px solid var(--border);font-size:13px"><strong>Item Description:</strong> ${r.itemDescription}</div>`:''}
-    ${r.remarks?`<div style="padding:6px 12px;background:var(--surface2);border-top:1px solid var(--border);font-size:13px"><strong>Remarks:</strong> ${r.remarks}</div>`:''}`;
+      <td>${d(r.session)}</td><td>${d(r.teQtnNo)}</td><td>${d(r.teQtnDate)}</td><td>${dc(r.customerName)}</td><td>${d(r.customerRefNo)}</td><td>${dc(r.kindAttention)}</td><td>${d(r.enquiryDate)}</td><td>${d(r.enquiryDueDate)}</td><td>${dc(r.oemName)}</td><td>${dc(r.makes)}</td><td>${dc(r.itemDescription)}</td><td>${d(r.tePORef)}</td><td>${d(r.ourFileNo)}</td><td>${d(r.orfNo)}</td><td>${dc(r.remarks)}</td><td>${sb(r.status)}</td>
+    </tr></tbody></table></div>`;
   }
-
   h+=`</div></div>`;
-  h+=`<div class="rec-body">`;
 
-  h+=`<div class="section"><div class="sec-hdr">
+  h+=`<div class="rec-body"><div class="section"><div class="sec-hdr">
     <span class="sec-title">Purchase Orders <span style="font-weight:400;color:#000">(${allPOs.length})</span></span>
     ${canPO?`<button class="btn btn-add btn-sm" onclick="openForm('PO','${esc(r.id)}','${t}')">+ New PO</button>`:`<span style="font-size:12px;color:#000">Set to Accepted first</span>`}
   </div>
   <div class="hint">💡 Click a PO row to open it and view its line items</div>
   <div class="t-wrap"><table><thead><tr>
-    <th>PO ID</th><th>SE PO Num</th><th>SE File Num</th><th>SE PO Entry Date</th><th>Customer Name</th><th>Cust. Tender Ref</th><th>Cust. PO No.</th><th>Cust. PO Date</th><th>Cust. Due Date</th><th>PO Value (₹)</th><th>GEM PO Num</th><th>GEM PO Date</th><th>Make</th><th>Item Description</th><th>OEM PO No.</th><th>OEM PO Date</th><th>OEM SO Num</th><th>GEM AMC Pay</th><th>GEM AMC Amt</th><th>NMDC SP Num</th><th>Remarks</th><th>Status</th><th>Items</th><th>OEM Progress</th><th>Actions</th>
+    <th>PO ID</th><th>SE PO Num</th><th>SE File Num</th><th>SE PO Entry Date</th><th>Customer Name</th><th>Cust. Tender Ref</th><th>Cust. PO No.</th><th>Cust. PO Date</th><th>Cust. Due Date</th><th>PO Value (₹)</th><th>GEM PO Num</th><th>GEM PO Date</th><th>Make</th><th>Item Description</th><th>OEM PO No.</th><th>OEM PO Date</th><th>OEM SO Num</th><th>GEM AMC Pay</th><th>GEM AMC Amt</th><th>NMDC SP Num</th><th>Remarks</th><th>Status</th><th>Actions</th>
   </tr></thead><tbody>`;
-  if(!allPOs.length)h+=`<tr><td colspan="25" class="empty">${canPO?'No POs yet — click + New PO':'Accept this quotation first'}</td></tr>`;
+  if(!allPOs.length)h+=`<tr><td colspan="23" class="empty">${canPO?'No POs yet — click + New PO':'Accept this quotation first'}</td></tr>`;
   else allPOs.forEach(po=>{
-    const pis=DB.POI.filter(p=>p.poId===po.id);
-    const ord=pis.reduce((s,p)=>s+(+p.orderedQty||0),0);
-    const pct=ord?Math.round(pis.reduce((s,p)=>s+oemRcvd(p.id),0)/ord*100):0;
     const isSub=subEditingRow?.type==='PO'&&subEditingRow?.id===po.id;
     if(isSub){
       h+=`<tr class="sub-editing" onclick="event.stopPropagation()">
@@ -926,8 +1046,6 @@ function rQuot(){
         <td>${ieTxt('nmDCSPNum',po.nmDCSPNum,'90px','data-sub')}</td>
         <td>${ieTxt('remarks',po.remarks,'110px','data-sub')}</td>
         <td>${ieSel('status',po.status,['Open','Close'],'data-sub')}</td>
-        <td class="mono">${pis.length}</td>
-        <td>${ord?prg(pct):'—'}</td>
         <td>${ieAct(`saveSubEdit('PO','${po.id}')`,`cancelSubEdit()`)}</td></tr>`;
     }else{
       h+=`<tr style="cursor:pointer" onclick="openPO('${po.id}')">
@@ -935,90 +1053,69 @@ function rQuot(){
         <td>${d(po.sePONum)}</td><td>${d(po.seFileNum)}</td><td>${d(po.sePOEntryDate)}</td>
         <td>${dc(po.customerName)}</td><td>${d(po.customerTenderRef)}</td><td>${d(po.customerPONum)}</td>
         <td>${d(po.customerPODate)}</td><td>${d(po.customerDueDate)}</td>
-        <td class="mono">${po.poValue?'₹'+fmt(po.poValue):'<span class="dash">—</span>'}</td>
+        <td class="mono">${mval(po.poValue)}</td>
         <td>${d(po.gemPONum)}</td><td>${d(po.gemPODate)}</td><td>${dc(po.make)}</td>
         <td style="max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(po.itemDescription)}</td>
         <td>${d(po.oemPONo)}</td><td>${d(po.oemPODate)}</td><td>${d(po.oemSONum)}</td>
         <td><span class="badge ${po.gemAMCPayment==='Yes'?'b-ok':'b-gray'}">${po.gemAMCPayment||'No'}</span></td>
-        <td class="mono">${po.gemAMCPaymentAmount?'₹'+fmt(po.gemAMCPaymentAmount):'<span class="dash">—</span>'}</td>
+        <td class="mono">${mval(po.gemAMCPaymentAmount)}</td>
         <td>${d(po.nmDCSPNum)}</td>
         <td style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${dc(po.remarks)}</td>
         <td>${sb(po.status)}</td>
-        <td class="mono">${pis.length} item${pis.length!==1?'s':''}</td>
-        <td>${ord?prg(pct):'<span class="dash">—</span>'}</td>
         <td onclick="event.stopPropagation()"><button class="btn btn-ghost btn-xs" onclick="startSubEdit('PO','${po.id}',event)">✏ Edit</button><button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();openPO('${po.id}')">Open →</button></td></tr>`;
     }
   });
-  h+=`</tbody></table></div></div>`;
-  return h+`</div>`;
+  h+=`</tbody></table></div></div></div>`;
+  return h;
 }
 
-// ── PO DETAIL PAGE ─────────────────────────────────────────────────────────
+// ── PO DETAIL ──────────────────────────────────────────────────────────────
 function rPO(){
   const r=curRec;
   const pois=DB.POI.filter(p=>p.poId===r.id);
-  const pipe=pipelineBar(r.quotId,r.quotType,r.id,null);
 
   let h=topBarHTML(
     [{label:LABELS[r.quotType]||r.quotType,click:`switchTab('${r.quotType}')`},{label:r.quotId,click:`openQuot('${r.quotType}','${esc(r.quotId)}')`},{label:r.id,click:''}],
-    `<button class="btn btn-sm" onclick="openEditForm('PO','${r.id}')">Edit</button><button class="btn btn-add btn-sm" onclick="openForm('POI',null,null,'${r.id}')">+ Add Item</button>`,
-    pipe
+    `<button class="btn btn-sm" onclick="openEditForm('PO','${r.id}')">Edit</button><button class="btn btn-add btn-sm" onclick="openForm('POI',null,null,'${r.id}')">+ Add Item</button>`
   );
 
-  h+=`<div class="rec-header">
-    <div class="rec-id-row"><span class="rec-id">${r.id}</span>${sb(r.status)}<span class="tag">PO</span>
-      <span style="font-size:13px;font-weight:500">from <span class="id-link" onclick="openQuot('${r.quotType}','${esc(r.quotId)}')">${r.quotId}</span></span>
+  h+=`<div style="padding:14px 18px 0"><div class="section">
+    <div class="sec-hdr">
+      <span class="sec-title">PO Details — ${r.id} ${sb(r.status)}</span>
+      <button class="btn btn-ghost btn-xs" onclick="openEditForm('PO','${r.id}')">✏ Edit</button>
     </div>
-    <div class="rec-meta">
-      <span>SE PO: ${r.sePONum||'—'}</span>
-      <span>SE File: ${r.seFileNum||'—'}</span>
-      <span>Entry: ${r.sePOEntryDate||'—'}</span>
-      <span>Cust. PO: ${r.customerPONum||'—'}</span>
-      <span>Due: ${r.customerDueDate||'—'}</span>
-      <span>Make: ${r.make||'—'}</span>
-      ${r.poValue?`<span>Value: ₹${fmt(r.poValue)}</span>`:''}
-    </div>
-  </div>
+    <div class="t-wrap"><table><thead><tr>
+      <th>Quot. ID</th><th>Session</th><th>SE PO Num</th><th>SE File Num</th><th>SE PO Entry Date</th>
+      <th>Customer Name</th><th>Cust. Tender Ref</th><th>Cust. PO Num</th><th>Cust. PO Date</th><th>Cust. Due Date</th>
+      <th>PO Value (₹)</th><th>GEM PO Num</th><th>GEM PO Date</th><th>Make</th><th>Item Description</th>
+      <th>OEM PO No.</th><th>OEM PO Date</th><th>OEM SO Num</th>
+      <th>GEM AMC Pay</th><th>GEM AMC Amt</th><th>NMDC SP Num</th><th>Remarks</th>
+    </tr></thead><tbody><tr>
+      <td><span class="id-link" onclick="openQuot('${r.quotType}','${esc(r.quotId)}')">${r.quotId}</span></td>
+      <td>${d(r.session)}</td><td>${d(r.sePONum)}</td><td>${d(r.seFileNum)}</td><td>${d(r.sePOEntryDate)}</td>
+      <td>${dc(r.customerName)}</td><td>${d(r.customerTenderRef)}</td><td>${d(r.customerPONum)}</td><td>${d(r.customerPODate)}</td><td>${d(r.customerDueDate)}</td>
+      <td class="mono">${mval(r.poValue)}</td><td>${d(r.gemPONum)}</td><td>${d(r.gemPODate)}</td><td>${dc(r.make)}</td>
+      <td>${dc(r.itemDescription)}</td>
+      <td>${d(r.oemPONo)}</td><td>${d(r.oemPODate)}</td><td>${d(r.oemSONum)}</td>
+      <td><span class="badge ${r.gemAMCPayment==='Yes'?'b-ok':'b-gray'}">${r.gemAMCPayment||'No'}</span></td>
+      <td class="mono">${mval(r.gemAMCPaymentAmount)}</td>
+      <td>${d(r.nmDCSPNum)}</td><td>${dc(r.remarks)}</td>
+    </tr></tbody></table></div>
+  </div></div>`;
 
-  <div style="padding:14px 18px 0">
-    <div class="section">
-      <div class="sec-hdr"><span class="sec-title">PO Details — ${r.id}</span><button class="btn btn-ghost btn-xs" onclick="openEditForm('PO','${r.id}')">✏ Edit</button></div>
-      <div class="t-wrap"><table><thead><tr>
-        <th>Session</th><th>SE PO Num</th><th>SE File Num</th><th>SE PO Entry Date</th>
-        <th>Customer Name</th><th>Cust. Tender Ref</th><th>Cust. PO Num</th><th>Cust. PO Date</th><th>Cust. Due Date</th>
-        <th>PO Value (₹)</th><th>GEM PO Num</th><th>GEM PO Date</th><th>Make</th>
-        <th>OEM PO No.</th><th>OEM PO Date</th><th>OEM SO Num</th>
-        <th>GEM AMC Pay</th><th>GEM AMC Amt</th><th>NMDC SP Num</th><th>Remarks</th>
-      </tr></thead><tbody><tr>
-        <td>${d(r.session)}</td><td>${d(r.sePONum)}</td><td>${d(r.seFileNum)}</td><td>${d(r.sePOEntryDate)}</td>
-        <td>${dc(r.customerName)}</td><td>${d(r.customerTenderRef)}</td><td>${d(r.customerPONum)}</td><td>${d(r.customerPODate)}</td><td>${d(r.customerDueDate)}</td>
-        <td class="mono">${r.poValue?'₹'+fmt(r.poValue):'—'}</td><td>${d(r.gemPONum)}</td><td>${d(r.gemPODate)}</td><td>${dc(r.make)}</td>
-        <td>${d(r.oemPONo)}</td><td>${d(r.oemPODate)}</td><td>${d(r.oemSONum)}</td>
-        <td><span class="badge ${r.gemAMCPayment==='Yes'?'b-ok':'b-gray'}">${r.gemAMCPayment||'No'}</span></td>
-        <td class="mono">${r.gemAMCPaymentAmount?'₹'+fmt(r.gemAMCPaymentAmount):'—'}</td>
-        <td>${d(r.nmDCSPNum)}</td><td>${dc(r.remarks)}</td>
-      </tr></tbody></table></div>
-      ${r.itemDescription?`<div style="padding:8px 12px;background:var(--surface2);border-top:1px solid var(--border);font-size:13px"><strong>Item Description:</strong> ${r.itemDescription}</div>`:''}
-    </div>
-  </div>
-
-  <div class="rec-body">`;
-
-  h+=`<div class="section"><div class="sec-hdr"><span class="sec-title">Line Items <span style="font-weight:400;color:#000">(${pois.length})</span></span>
+  h+=`<div class="rec-body"><div class="section"><div class="sec-hdr"><span class="sec-title">Line Items <span style="font-weight:400;color:#000">(${pois.length})</span></span>
     <div style="display:flex;gap:6px;align-items:center">
-      ${selPOI?`<span class="chip-clr" onclick="selPOI=null;subEditingRow=null;render()">✕ Clear selection</span>`:''}
+      ${selPOI?`<button class="btn btn-xs" onclick="selPOI=null;subEditingRow=null;render()">✕ Clear selection</button>`:''}
       <button class="btn btn-add btn-sm" onclick="openForm('POI',null,null,'${r.id}')">+ Add Item</button>
     </div>
   </div>
-  <div class="hint">💡 Click a line item row to select it — OEM receipts &amp; customer dispatches will appear below</div>
+  <div class="hint">💡 Click a line item row to select it — OEM receipts & customer dispatches will appear below</div>
   <div class="t-wrap"><table><thead><tr>
     <th style="width:28px"></th>
     <th>POI ID</th><th>Quot. ID</th><th>Item Name</th><th>Item Desc./CAT No</th>
     <th>Ordered Qty</th><th>UOM</th><th>OEM Details</th>
-    <th>OEM Invoice No</th><th>OEM Invoice Date</th>
-    <th>SE PO NO</th><th>SE File NO</th>
-    <th>Qty Rcvd OEM</th><th>Qty Pend. OEM</th>
-    <th>Qty Supp. Cust.</th><th>Qty Pend. Cust.</th>
+    <th>OEM Invoice No</th><th>OEM Invoice Date</th><th>SE PO NO</th><th>SE File NO</th>
+    <th>Qty Rcvd OEM</th><th>Qty Pend. OEM</th><th>Qty Supp. Cust.</th><th>Qty Pend. Cust.</th>
     <th>Status</th><th>Actions</th>
   </tr></thead><tbody>`;
 
@@ -1072,14 +1169,15 @@ function rPO(){
     const poi=DB.POI.find(p=>p.id===selPOI);
     const oems=DB.OEM.filter(o=>o.poiId===selPOI);
     const css=DB.CS.filter(c=>c.poiId===selPOI);
-    const rcvd=poiQtyRcvd(poi||{id:selPOI}),suppC=poiQtySupplCust(poi||{id:selPOI}),pendOEM=poiQtyPendOEM(poi||{id:selPOI,orderedQty:0}),pendCust=poiQtyPendCust(poi||{id:selPOI,orderedQty:0});
+    const rcvd=poi?poiQtyRcvd(poi):0,suppC=poi?poiQtySupplCust(poi):0;
+    const pendOEM=poi?poiQtyPendOEM(poi):0,pendCust=poi?poiQtyPendCust(poi):0;
     const canCS=oems.length>0;
 
     h+=`<div class="poi-selected-panel">
       <div class="poi-panel-header">
         <div class="poi-panel-title">
-          <span style="font-size:13px">▶</span>
-          <span class="tag" style="background:rgba(255,255,255,.7)">${selPOI}</span>
+          <span>▶</span>
+          <span class="tag">${selPOI}</span>
           <strong>${poi?.itemName||''}</strong>
           <span style="font-weight:500;font-size:12px">· ${poi?.oemDetails||''}</span>
         </div>
@@ -1088,7 +1186,7 @@ function rPO(){
             <span>Ordered: <strong>${poi?.orderedQty||0}</strong></span>
             <span>OEM Rcvd: <strong>${rcvd}</strong></span>
             <span>OEM Pend: <strong>${pendOEM}</strong></span>
-            <span>Supplied to Cust: <strong>${suppC}</strong></span>
+            <span>Supplied: <strong>${suppC}</strong></span>
             <span>Cust Pend: <strong>${pendCust}</strong></span>
           </div>
           <span class="poi-panel-close" onclick="selPOI=null;subEditingRow=null;render()">✕</span>
@@ -1101,8 +1199,7 @@ function rPO(){
             <button class="btn btn-add btn-sm" onclick="openForm('OEM',null,null,'${r.id}','${selPOI}')">+ Add OEM Receipt</button>
           </div>
           <div class="t-wrap"><table><thead><tr>
-            <th>OEM ID</th><th>POI ID</th><th>PO ID</th><th>Quot. ID</th>
-            <th>Supplier</th><th>Item Name</th><th>Date</th><th>Qty Received</th><th>Remarks</th><th>Actions</th>
+            <th>OEM ID</th><th>POI ID</th><th>PO ID</th><th>Quot. ID</th><th>Supplier</th><th>Item Name</th><th>Date</th><th>Qty Received</th><th>Remarks</th><th>Actions</th>
           </tr></thead><tbody>`;
     if(!oems.length){h+=`<tr><td colspan="10" class="empty" style="padding:18px">No OEM receipts yet — click <strong>+ Add OEM Receipt</strong></td></tr>`;}
     else oems.forEach(o=>{
@@ -1111,15 +1208,13 @@ function rPO(){
       else h+=`<tr><td class="mono">${o.id}</td><td>${d(o.poiId)}</td><td>${d(o.poId)}</td><td>${d(o.quotId)}</td><td>${dc(o.supplier)}</td><td>${dc(o.itemName)}</td><td>${d(o.date)}</td><td class="mono"><strong>${o.qtyReceived}</strong></td><td>${dc(o.remarks)}</td><td onclick="event.stopPropagation()"><button class="btn btn-ghost btn-xs" onclick="startSubEdit('OEM','${o.id}',event)">✏ Edit</button></td></tr>`;
     });
     h+=`</tbody></table></div></div>
-
         <div class="sub-table-block">
           <div class="sub-table-hdr">
             <span class="sub-table-title">🚚 Customer Dispatches <span style="font-weight:400;font-size:12px">(${css.length})</span></span>
             ${canCS?`<button class="btn btn-add btn-sm" onclick="openForm('CS',null,null,'${r.id}','${selPOI}')">+ Add Dispatch</button>`:`<span style="font-size:12px;font-weight:500;font-style:italic">Record an OEM receipt first</span>`}
           </div>
           <div class="t-wrap"><table><thead><tr>
-            <th>CS ID</th><th>POI ID</th><th>PO ID</th><th>Quot. ID</th><th>OEM Ref</th>
-            <th>Customer</th><th>Item Name</th><th>Date</th><th>Qty Supplied</th><th>Remarks</th><th>Actions</th>
+            <th>CS ID</th><th>POI ID</th><th>PO ID</th><th>Quot. ID</th><th>OEM Ref</th><th>Customer</th><th>Item Name</th><th>Date</th><th>Qty Supplied</th><th>Remarks</th><th>Actions</th>
           </tr></thead><tbody>`;
     if(!css.length){h+=`<tr><td colspan="11" class="empty" style="padding:18px">${canCS?'No dispatches yet — click <strong>+ Add Dispatch</strong>':'Record an OEM receipt first'}</td></tr>`;}
     else css.forEach(c=>{
@@ -1129,7 +1224,6 @@ function rPO(){
     });
     h+=`</tbody></table></div></div></div></div>`;
   }
-
   h+=`</div>`;
   return h;
 }
@@ -1151,29 +1245,29 @@ function openEditForm(type,id){
 }
 function closeModal(){document.getElementById('modal').style.display='none';formCtx=null}
 
-function fi(id,label,val,type,placeholder,readonly){
-  return`<div class="fgrp"><label>${label}</label><input type="${type||'text'}" id="${id}" value="${esc(val||'')}" ${readonly?'readonly':''} placeholder="${placeholder||''}"/></div>`;
-}
-function fs(id,label,val,opts){
-  return`<div class="fgrp"><label>${label}</label><select id="${id}">${opts.map(o=>`<option value="${o}"${val===o?' selected':''}>${o}</option>`).join('')}</select></div>`;
-}
-function fd(id,label,val){
-  return`<div class="fgrp"><label>${label}</label><input type="date" id="${id}" value="${dmyToISO(val||'')}"/></div>`;
-}
-function fta(id,label,val,cls){
-  return`<div class="fgrp ${cls||'f-full'}"><label>${label}</label><textarea id="${id}">${esc(val||'')}</textarea></div>`;
-}
-function fsec(label){return`<div class="form-section-title">${label}</div>`;}
+function fi(id,label,val,type,placeholder,readonly){return`<div class="fgrp"><label>${label}</label><input type="${type||'text'}" id="${id}" value="${esc(val||'')}" ${readonly?'readonly':''} placeholder="${placeholder||''}"/></div>`}
+function fs(id,label,val,opts){return`<div class="fgrp"><label>${label}</label><select id="${id}">${opts.map(o=>`<option value="${o}"${val===o?' selected':''}>${o}</option>`).join('')}</select></div>`}
+function fd(id,label,val){return`<div class="fgrp"><label>${label}</label><input type="date" id="${id}" value="${dmyToISO(val||'')}"/></div>`}
+function fta(id,label,val,cls){return`<div class="fgrp ${cls||'f-full'}"><label>${label}</label><textarea id="${id}">${esc(val||'')}</textarea></div>`}
+function fsec(label){return`<div class="form-section-title">${label}</div>`}
 
 function buildForm(type,rec,ctx){
   const v=(f,fb='')=>rec?rec[f]??fb:ctx[f]??fb;
+
+  const srcQuot = (!rec && ctx.quotId && ctx.quotType && DB[ctx.quotType])
+    ? DB[ctx.quotType].find(q=>q.id===ctx.quotId)
+    : null;
+
+  const srcPO = (!rec && ctx.poId)
+    ? DB.PO.find(p=>p.id===ctx.poId)
+    : null;
 
   if(type==='SE'){
     const nid=rec?rec.id:nextQuotId('SE',DB.SE);
     return`<div class="fg">
       <div class="fgrp"><label>Quotation ID</label><div class="id-gen">${nid}</div></div>
       ${fd('f-seQtnDate','SE QTN Date',v('seQtnDate'))}
-      ${fi('f-session','Session',v('session'),'text','e.g. 2024-25')}
+      ${fi('f-session','Session',v('session'),'text','e.g. 24-25')}
       ${fi('f-seQtnNo','SE QTN No.',v('seQtnNo'),'text','e.g. SE/001/24')}
       ${fi('f-customerName','Customer Name',v('customerName'),'text','Customer name')}
       ${fi('f-customerRefNo','Customer Ref No.',v('customerRefNo'),'text','Ref no.')}
@@ -1190,51 +1284,54 @@ function buildForm(type,rec,ctx){
       ${fs('f-status','Status',v('status','Pending'),['Pending','Accepted','Rejected'])}
     </div>`;
   }
+
   if(type==='SRE'){
     const nid=rec?rec.id:nextQuotId('SRE',DB.SRE);
     return`<div class="fg">
       <div class="fgrp"><label>Quotation ID</label><div class="id-gen">${nid}</div></div>
       ${fd('f-serviceQtnDate','Service QTN Date',v('serviceQtnDate'))}
-      ${fi('f-session','Session',v('session'),'text','e.g. 2024-25')}
+      ${fi('f-session','Session',v('session'),'text','e.g. 24-25')}
       ${fi('f-serviceQtnNo','Service QTN No.',v('serviceQtnNo'),'text','e.g. SER/001/24')}
       ${fi('f-customerName','Customer Name',v('customerName'),'text','Customer name')}
       ${fi('f-customerRefNo','Customer Ref No.',v('customerRefNo'),'text','Ref no.')}
       ${fi('f-kindAttention','Kind Attention',v('kindAttention'),'text','Contact person')}
       ${fd('f-enquiryDate','Enquiry Date',v('enquiryDate'))}
-      ${fta('f-itemDescription','Item Description',v('itemDescription'))}
       ${fi('f-qtyMandays','Qty / Mandays',v('qtyMandays'),'text','e.g. 10 Mandays')}
-      ${fi('f-uom','UOM',v('uom'),'text','Unit of measure')}
-      ${fi('f-totalPrice','Total Price (₹)',v('totalPrice'),'number','0')}
+      ${fi('f-uom','UOM',v('uom'),'text','e.g. Mandays')}
+      ${fi('f-totalPrice','Total Price',v('totalPrice'),'number','0')}
       ${fi('f-poNo','PO No.',v('poNo'),'text','PO number')}
+      ${fta('f-itemDescription','Item Description',v('itemDescription'))}
       ${fta('f-remarks','Remarks',v('remarks'))}
       ${fs('f-status','Status',v('status','Pending'),['Pending','Accepted','Rejected'])}
     </div>`;
   }
+
   if(type==='BO'){
     const nid=rec?rec.id:nextQuotId('BO',DB.BO);
     return`<div class="fg">
       <div class="fgrp"><label>Quotation ID</label><div class="id-gen">${nid}</div></div>
-      ${fd('f-shreeBoDate','Shree BO Date',v('shreeBoDate'))}
-      ${fi('f-shreeBudgetaryNo','Shree Budgetary No.',v('shreeBudgetaryNo'),'text','e.g. BO/001/24')}
-      ${fi('f-session','Session',v('session'),'text','e.g. 2024-25')}
-      ${fi('f-makes','Makes',v('makes'),'text','Brand / makes')}
+      ${fd('f-shreeBoDate','Budgetary Offer Date',v('shreeBoDate'))}
+      ${fi('f-shreeBudgetaryNo','Budgetary No.',v('shreeBudgetaryNo'),'text','e.g. BO/001/24')}
+      ${fi('f-session','Session',v('session'),'text','e.g. 24-25')}
       ${fi('f-customerName','Customer Name',v('customerName'),'text','Customer name')}
       ${fi('f-kindAttention','Kind Attention',v('kindAttention'),'text','Contact person')}
       ${fd('f-boEnquiryDate','BO Enquiry Date',v('boEnquiryDate'))}
-      ${fta('f-itemDescription','Item Description',v('itemDescription'))}
+      ${fi('f-makes','Makes',v('makes'),'text','Brand / makes')}
       ${fi('f-qty','Qty',v('qty'),'text','Quantity')}
-      ${fi('f-uom','UOM',v('uom'),'text','Unit of measure')}
-      ${fi('f-totalPrice','Total Price (₹)',v('totalPrice'),'number','0')}
+      ${fi('f-uom','UOM',v('uom'),'text','e.g. Nos')}
+      ${fi('f-totalPrice','Total Price',v('totalPrice'),'number','0')}
+      ${fta('f-itemDescription','Item Description',v('itemDescription'))}
       ${fta('f-remark','Remark',v('remark'))}
       ${fs('f-status','Status',v('status','Pending'),['Pending','Accepted','Rejected'])}
     </div>`;
   }
+
   if(type==='AQ'){
     const nid=rec?rec.id:nextQuotId('AQ',DB.AQ);
     return`<div class="fg">
       <div class="fgrp"><label>Quotation ID</label><div class="id-gen">${nid}</div></div>
       ${fd('f-teQtnDate','TE QTN Date',v('teQtnDate'))}
-      ${fi('f-session','Session',v('session'),'text','e.g. 2024-25')}
+      ${fi('f-session','Session',v('session'),'text','e.g. 24-25')}
       ${fi('f-teQtnNo','TE QTN No.',v('teQtnNo'),'text','e.g. TE/001/24')}
       ${fi('f-customerName','Customer Name',v('customerName'),'text','Customer name')}
       ${fi('f-customerRefNo','Customer Ref No.',v('customerRefNo'),'text','Ref no.')}
@@ -1243,7 +1340,7 @@ function buildForm(type,rec,ctx){
       ${fd('f-enquiryDueDate','Enquiry Due Date',v('enquiryDueDate'))}
       ${fi('f-oemName','OEM Name',v('oemName'),'text','OEM name')}
       ${fi('f-makes','Makes',v('makes'),'text','Brand / makes')}
-      ${fi('f-tePORef','TE PO Ref',v('tePORef'),'text','PO reference')}
+      ${fi('f-tePORef','TE PO Ref',v('tePORef'),'text','PO ref')}
       ${fi('f-ourFileNo','Our File No.',v('ourFileNo'),'text','File number')}
       ${fi('f-orfNo','ORF No.',v('orfNo'),'text','ORF number')}
       ${fta('f-itemDescription','Item Description',v('itemDescription'))}
@@ -1251,21 +1348,31 @@ function buildForm(type,rec,ctx){
       ${fs('f-status','Status',v('status','Pending'),['Pending','Accepted','Rejected'])}
     </div>`;
   }
+
   if(type==='PO'){
     const nid=rec?rec.id:nextId('PO',DB.PO);
+    const mappedSession = rec ? v('session') : (srcQuot?.session || v('session'));
+    const mappedSePONum = rec ? v('sePONum') : (srcQuot?.sePoNo || v('sePONum'));
+    const mappedSeFileNum = rec ? v('seFileNum') : (srcQuot?.seFileNo || v('seFileNum'));
+    const mappedCustomerName = rec ? v('customerName') : (srcQuot?.customerName || v('customerName'));
+    const mappedCustomerTenderRef = rec ? v('customerTenderRef') : (srcQuot?.customerRefNo || v('customerTenderRef'));
+    const mappedMake = rec ? v('make') : (srcQuot?.makes || v('make'));
+    const mappedItemDescription = rec ? v('itemDescription') : (srcQuot?.itemDescription || v('itemDescription'));
+    const mappedRemarks = rec ? v('remarks') : (srcQuot?.remarks || v('remarks'));
+
     return`<div class="fg">
       <div class="fgrp"><label>PO ID</label><div class="id-gen">${nid}</div></div>
       ${fs('f-status','Status',v('status','Open'),['Open','Close'])}
       ${fsec('Shree Internal')}
-      ${fi('f-session','Session',v('session'),'text','e.g. 2024-25')}
-      ${fi('f-sePONum','SE PO Num',v('sePONum'),'text','SE PO number')}
-      ${fi('f-seFileNum','SE File Num',v('seFileNum'),'text','SE File number')}
+      ${fi('f-session','Session',mappedSession,'text','e.g. 24-25')}
+      ${fi('f-sePONum','SE PO Num',mappedSePONum,'text','SE PO number')}
+      ${fi('f-seFileNum','SE File Num',mappedSeFileNum,'text','SE File number')}
       ${fd('f-sePOEntryDate','SE PO Entry Date',v('sePOEntryDate'))}
       <div class="fgrp"><label>Source Quotation</label><input type="text" id="f-quotId" value="${esc(v('quotId',ctx.quotId||''))}" readonly/></div>
       ${fs('f-quotType','Quot. Type',v('quotType',ctx.quotType||'SE'),['SE','SRE','BO','AQ'])}
       ${fsec('Customer Details')}
-      ${fi('f-customerName','Customer Name',v('customerName'),'text','Customer name')}
-      ${fi('f-customerTenderRef','Customer Tender Ref',v('customerTenderRef'),'text','Tender ref')}
+      ${fi('f-customerName','Customer Name',mappedCustomerName,'text','Customer name')}
+      ${fi('f-customerTenderRef','Customer Tender Ref',mappedCustomerTenderRef,'text','Tender ref')}
       ${fi('f-customerPONum','Customer PO Num',v('customerPONum'),'text','Customer PO number')}
       ${fd('f-customerPODate','Customer PO Date',v('customerPODate'))}
       ${fd('f-customerDueDate','Customer Due Date',v('customerDueDate'))}
@@ -1276,32 +1383,41 @@ function buildForm(type,rec,ctx){
       ${fs('f-gemAMCPayment','GEM AMC Payment',v('gemAMCPayment','No'),['No','Yes'])}
       ${fi('f-gemAMCPaymentAmount','GEM AMC Payment Amount (₹)',v('gemAMCPaymentAmount'),'number','0')}
       ${fsec('Item & OEM Details')}
-      ${fi('f-make','Make',v('make'),'text','Brand / make')}
+      ${fi('f-make','Make',mappedMake,'text','Brand / make')}
       ${fi('f-nmDCSPNum','NMDC SP Num',v('nmDCSPNum'),'text','NMDC SP number')}
-      ${fta('f-itemDescription','Item Description',v('itemDescription'))}
+      ${fta('f-itemDescription','Item Description',mappedItemDescription)}
       ${fi('f-oemPONo','OEM PO No.',v('oemPONo'),'text','OEM PO number')}
       ${fd('f-oemPODate','OEM PO Date',v('oemPODate'))}
       ${fi('f-oemSONum','OEM SO Num',v('oemSONum'),'text','OEM SO number')}
-      ${fta('f-remarks','Remarks',v('remarks'))}
+      ${fta('f-remarks','Remarks',mappedRemarks)}
     </div>`;
   }
+
   if(type==='POI'){
     const nid=rec?rec.id:nextId('POI',DB.POI);
     const poOpts=(ctx.quotId?DB.PO.filter(p=>p.quotId===ctx.quotId):DB.PO).map(p=>`<option value="${p.id}"${(rec?.poId||ctx.poId)===p.id?' selected':''}>${p.id} — ${p.customerName||p.sePONum||''}</option>`).join('');
+    const mappedQuotId = rec ? v('quotId') : (srcPO?.quotId || v('quotId',ctx.quotId||''));
+    const mappedItemDescription = rec ? v('itemDescription') : (srcPO?.itemDescription || v('itemDescription'));
+    const mappedOEMDetails = rec ? v('oemDetails') : (srcPO?.make || v('oemDetails'));
+    const mappedSePONo = rec ? v('sePONo') : (srcPO?.sePONum || v('sePONo'));
+    const mappedSeFileNo = rec ? v('seFileNo') : (srcPO?.seFileNum || v('seFileNo'));
+
     return`<div class="fg">
       <div class="fgrp"><label>POI ID</label><div class="id-gen">${nid}</div></div>
       <div class="fgrp"><label>Parent PO</label><select id="f-poId"><option value="">Select PO</option>${poOpts}</select></div>
+      <div class="fgrp"><label>Quotation ID</label><input type="text" id="f-quotId" value="${esc(mappedQuotId)}" readonly/></div>
       ${fi('f-itemName','Item Name',v('itemName'),'text','e.g. Steel pipe 20mm')}
-      ${fta('f-itemDescription','Item Description / CAT No',v('itemDescription'),'f-full')}
+      ${fta('f-itemDescription','Item Description / CAT No',mappedItemDescription,'f-full')}
       ${fi('f-orderedQty','Ordered Qty',v('orderedQty',1),'number','')}
       ${fi('f-uom','UOM',v('uom'),'text','e.g. Nos, Sets, Kg')}
-      ${fta('f-oemDetails','OEM Details',v('oemDetails'),'f-full')}
+      ${fta('f-oemDetails','OEM Details',mappedOEMDetails,'f-full')}
       ${fi('f-oemInvoiceNo','OEM Invoice No.',v('oemInvoiceNo'),'text','Invoice number')}
       ${fd('f-oemInvoiceDate','OEM Invoice Date',v('oemInvoiceDate'))}
-      ${fi('f-sePONo','SE PO NO',v('sePONo'),'text','SE PO number')}
-      ${fi('f-seFileNo','SE File NO',v('seFileNo'),'text','SE File number')}
+      ${fi('f-sePONo','SE PO NO',mappedSePONo,'text','SE PO number')}
+      ${fi('f-seFileNo','SE File NO',mappedSeFileNo,'text','SE File number')}
     </div>`;
   }
+
   if(type==='OEM'){
     const nid=nextId('OEM',DB.OEM);
     const poiId=ctx.poiId||'';
@@ -1317,6 +1433,7 @@ function buildForm(type,rec,ctx){
       ${fta('f-remarks','Remarks','')}
     </div>`;
   }
+
   if(type==='CS'){
     const nid=nextId('CS',DB.CS);
     const poiId=ctx.poiId||'';
@@ -1336,6 +1453,7 @@ function buildForm(type,rec,ctx){
       ${fta('f-remarks','Remarks','')}
     </div>`;
   }
+
   return'';
 }
 
@@ -1377,9 +1495,8 @@ async function saveForm(){
       if(!gv('f-sePONum')&&!gv('f-customerName')){toast('SE PO Num or Customer Name required');return}
       rec={id:mode==='edit'?formCtx.id:nextId('PO',DB.PO),quotId:gv('f-quotId'),quotType:gv('f-quotType'),session:gv('f-session'),sePONum:gv('f-sePONum'),seFileNum:gv('f-seFileNum'),sePOEntryDate:gd('f-sePOEntryDate'),customerName:gv('f-customerName'),customerTenderRef:gv('f-customerTenderRef'),customerPONum:gv('f-customerPONum'),customerPODate:gd('f-customerPODate'),customerDueDate:gd('f-customerDueDate'),poValue:gv('f-poValue'),gemPONum:gv('f-gemPONum'),gemPODate:gd('f-gemPODate'),make:gv('f-make'),itemDescription:gv('f-itemDescription'),oemPONo:gv('f-oemPONo'),oemPODate:gd('f-oemPODate'),oemSONum:gv('f-oemSONum'),gemAMCPayment:gv('f-gemAMCPayment')||'No',gemAMCPaymentAmount:gv('f-gemAMCPaymentAmount'),nmDCSPNum:gv('f-nmDCSPNum'),remarks:gv('f-remarks'),status:gv('f-status')||'Open'};
     }else if(type==='POI'){
-      const poId=gv('f-poId');if(!poId){toast('Select a PO');return}
-      const po=DB.PO.find(p=>p.id===poId);
-      rec={id:mode==='edit'?formCtx.id:nextId('POI',DB.POI),poId,quotId:po?.quotId||'',itemName:gv('f-itemName'),itemDescription:gv('f-itemDescription'),orderedQty:+gv('f-orderedQty')||0,uom:gv('f-uom'),oemDetails:gv('f-oemDetails'),oemInvoiceNo:gv('f-oemInvoiceNo'),oemInvoiceDate:gd('f-oemInvoiceDate'),sePONo:gv('f-sePONo'),seFileNo:gv('f-seFileNo')};
+      if(!gv('f-poId')){toast('Parent PO required');return}
+      rec={id:mode==='edit'?formCtx.id:nextId('POI',DB.POI),poId:gv('f-poId'),quotId:gv('f-quotId'),itemName:gv('f-itemName'),itemDescription:gv('f-itemDescription'),orderedQty:+gv('f-orderedQty')||0,uom:gv('f-uom'),oemDetails:gv('f-oemDetails'),oemInvoiceNo:gv('f-oemInvoiceNo'),oemInvoiceDate:gd('f-oemInvoiceDate'),sePONo:gv('f-sePONo'),seFileNo:gv('f-seFileNo')};
     }else if(type==='OEM'){
       const poiId=gv('f-poiId');if(!poiId||!gv('f-qtyReceived')){toast('Select item and enter qty');return}
       const poi=DB.POI.find(p=>p.id===poiId);
